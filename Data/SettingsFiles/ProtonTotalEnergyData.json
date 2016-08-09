@@ -1,0 +1,129 @@
+
+{
+    "AMS01": {
+	"loc": "Data/Proton/TotalEnergy/AMS/AMS01-1998.dat",
+	"sol_mod": 555,
+	"expname": "AMS01",
+	"years": "(1998)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "AMS02": {
+	"loc": "Data/Proton/TotalEnergy/AMS/AMS02-2011-2013.dat",
+	"sol_mod": 564,
+	"expname": "AMS02",
+	"years": "(2011 - 2013)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "ATIC02": {
+	"loc": "Data/Proton/TotalEnergy/ATIC/ATIC02-2003.dat",
+	"sol_mod": 909,
+	"expname": "ATIC02",
+	"years": "(2003)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "BESS": {
+	"1": {
+	    "loc": "Data/Proton/TotalEnergy/BESS/BESS-TeV-2002-H.dat",
+	    "sol_mod": 1058
+	},
+	"2": {
+	    "loc": "Data/Proton/TotalEnergy/BESS/BESS-2000-H.dat",
+	    "sol_mod": 1057
+	},
+	"3": {
+	    "loc": "Data/Proton/TotalEnergy/BESS/BESS-1997-H.dat",
+	    "sol_mod": 409
+	},
+	"4": {
+	    "loc": "Data/Proton/TotalEnergy/BESS/BESS-1998-H.dat",
+	    "sol_mod": 514
+	},
+	"5": {
+	    "loc": "Data/Proton/TotalEnergy/BESS/BESS-1999-H.dat",
+	    "sol_mod": 609
+	},
+	"expname": "BESS",
+	"years": "(1997 - 2002)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 22
+    },
+    "CREAMI": {
+	"loc": "Data/Proton/TotalEnergy/CREAM/CREAM-I-2004-2005.dat",
+	"sol_mod": 722,
+	"expname": "CREAM I",
+	"years": "(2004 - 2005)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+    },
+    "JACEE": {
+	"loc": "Data/Proton/TotalEnergy/JACEE/JACEE-1979-1995.dat",
+	"sol_mod": 583,
+	"expname": "JACEE",
+	"years": "(1979 - 1995)",
+	"line_colour": 6,
+	"marker_colour": 6,
+	"marker_style": 25
+    },
+    "PAMELA": {
+	"2": {
+	    "loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-2006-2008-H.dat",
+	    "sol_mod": 372
+	},
+	"5": {
+	    "loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-2006-H.dat",
+	    "sol_mod": 416
+	},
+	"6": {
+	    "loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-2007-H.dat",
+	    "sol_mod": 340
+	},
+	"7": {
+	    "loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-2008-H.dat",
+	    "sol_mod": 306
+	},
+	"8": {
+	    "loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-2009-2010-H.dat",
+	    "sol_mod": 255
+	},
+	"expname": "PAMELA",
+	"years": "(2006 - 2010)",
+	"line_colour": 600,
+	"marker_colour": 600,
+	"marker_style": 23
+    },
+    "PAMELACALO": {
+	"loc": "Data/Proton/TotalEnergy/PAMELA/PAMELA-CALO-2006-2010-H.dat",
+	"sol_mod": 342,
+	"expname": "PAMELA CALO",
+	"years": "(2006 - 2010)",
+	"line_colour": 593,
+	"marker_colour": 593,
+	"marker_style": 27
+    },
+    "RUNJOB": {
+	"loc": "Data/Proton/TotalEnergy/RUNJOB/RUNJOB-1995-1999.dat",
+	"sol_mod": 488,
+	"expname": "RUNJOB",
+	"years": "(1995 - 1999)",
+	"line_colour": 14,
+	"marker_colour": 14,
+	"marker_style": 24
+    },
+    "SOKOL": {
+	"loc": "Data/Proton/TotalEnergy/SOKOL/SOKOL-1984-1986.dat",
+	"sol_mod": 646,
+	"expname": "SOKOL",
+	"years": "(1984 - 1986)",
+	"line_colour": 95,
+	"marker_colour": 95,
+	"marker_style": 26
+    }
+}

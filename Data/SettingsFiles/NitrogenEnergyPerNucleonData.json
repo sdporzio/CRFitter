@@ -1,0 +1,125 @@
+{
+    "ACE-CRIS": {
+	"1": {
+	    "loc": "Data/Nitrogen/ACE-CRIS/ACE-CRIS-1997-1998.dat",
+	    "sol_mod": 425
+	},
+	"2": {
+	    "loc": "Data/Nitrogen/ACE-CRIS/ACE-CRIS-2001-2003.dat",
+	    "sol_mod": 917
+	},
+	"3": {
+	    "loc": "Data/Nitrogen/ACE-CRIS/ACE-CRIS-2009-2010.dat",
+	    "sol_mod": 266
+	},
+	"expname": "ACE-CRIS",
+	"years": "(1997 - 2010)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "Balloon": {
+	"1": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1964-1965.dat",
+	    "sol_mod": 434
+	},
+	"2": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1965.dat",
+	    "sol_mod": 386
+	},
+	"3": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1971-1972.dat",
+	    "sol_mod": 482
+	},
+	"4": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1972.dat",
+	    "sol_mod": 461
+	},
+	"5": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1973.dat",
+	    "sol_mod": 466
+	},
+	"6": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1974-1976.dat",
+	    "sol_mod": 551
+	},
+	"7": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-09.dat",
+	    "sol_mod": 407
+	},
+	"8": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-10.dat",
+	    "sol_mod": 408
+	},
+	"9": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1977.dat",
+	    "sol_mod": 475
+	},
+	"expname": "Balloon",
+	"years": "(1964 - 1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "CREAM-II": {
+	"loc": "Data/Nitrogen/CREAM/CREAM-II-2005-2006.dat",
+	"sol_mod": 530,
+	"expname": "CREAM II",
+	"years": "(2005 - 2006)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "CRN-SpaceLab": {
+	"loc": "Data/Nitrogen/CRN-SpaceLab/CRN-SpaceLab2-1985.dat",
+	"sol_mod": 544,
+	"expname": "CRN-SpaceLab 2",
+	"years": "(1985)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 22
+    },
+    "HEAO3-C2": {
+	"loc": "Data/Nitrogen/HEAO3-C2/HEAO3-C2-1979-1980.dat",
+	"sol_mod": 742,
+	"expname": "HEAO3-C2",
+	"years": "(1979 - 1980)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+    },
+    "IMP": {
+	"1": {
+	    "loc": "Data/Nitrogen/IMP/IMP5-1969-1970.dat",
+	    "sol_mod": 835
+	},
+	"2": {
+	    "loc": "Data/Nitrogen/IMP/IMP7-1973.dat",
+	    "sol_mod": 487
+	},
+	"expname": "IMP",
+	"years": "(1969 - 1973)",
+	"line_colour": 6,
+	"marker_colour": 6,
+	"marker_style": 25
+    },
+    "OGO": {
+	"1": {
+	    "loc": "Data/Nitrogen/OGO/OGO1-1964-1965.dat",
+	    "sol_mod": 400
+	},
+	"2": {
+	    "loc": "Data/Nitrogen/OGO/OGO1-1965.dat",
+	    "sol_mod": 352
+	},
+	"3": {
+	    "loc": "Data/Nitrogen/OGO/OGO5-1968.dat",
+	    "sol_mod": 734
+	},
+	"expname": "OGO",
+	"years": "(1964 - 1968)",
+	"line_colour": 600,
+	"marker_colour": 600,
+	"marker_style": 23
+    }
+}

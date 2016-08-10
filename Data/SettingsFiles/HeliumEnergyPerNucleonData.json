@@ -1,0 +1,131 @@
+
+{
+    "AMS01": {
+	"loc": "Data/Helium/EnergyPerNucleon/AMS/AMS01-1998.dat",
+	"sol_mod": 555,
+	"expname": "AMS01",
+	"years": "(1998)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "AMS02": {
+	"loc": "Data/Helium/EnergyPerNucleon/AMS/AMS02-2011-2013.dat",
+	"sol_mod": 564,
+	"expname": "AMS02",
+	"years": "(2011 - 2013)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "ATIC02": {
+	"loc": "Data/Helium/EnergyPerNucleon/ATIC/ATIC02-2003.dat",
+	"sol_mod": 909,
+	"expname": "ATIC02",
+	"years": "(2003)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "BESS": {
+	"1": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-PolarI-2004.dat",
+	    "sol_mod": 615
+	},
+	"2": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-PolarII-2007-2008.dat",
+	    "sol_mod": 353
+	},
+	"3": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-TeV-2002.dat",
+	    "sol_mod": 1058
+	},
+	"4": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-2000.dat",
+	    "sol_mod": 1057
+	},
+	"5": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1993.dat",
+	    "sol_mod": 573
+	},
+	"6": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1994.dat",
+	    "sol_mod": 544
+	},
+	"7": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1995.dat",
+	    "sol_mod": 473
+	},
+	"8": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1997.dat",
+	    "sol_mod": 409
+	},
+	"9": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1998.dat",
+	    "sol_mod": 514
+	},
+	"10": {
+	    "loc": "Data/Helium/EnergyPerNucleon/BESS/BESS-1999.dat",
+	    "sol_mod": 609
+	},
+	"expname": "BESS",
+	"years": "(1993 - 2008)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 22
+    },
+    "CREAMI": {
+	"loc": "Data/Helium/EnergyPerNucleon/CREAM/CREAM-I-2004-2005.dat",
+	"sol_mod": 722,
+	"expname": "CREAM I",
+	"years": "(2004 - 2005)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+    },
+    "JACEE": {
+	"loc": "Data/Helium/EnergyPerNucleon/JACEE/JACEE-1979-1995.dat",
+	"sol_mod": 583,
+	"expname": "JACEE",
+	"years": "(1979 - 1995)",
+	"line_colour": 6,
+	"marker_colour": 6,
+	"marker_style": 25
+    },
+    "PAMELA": {
+	"loc": "Data/Helium/EnergyPerNucleon/PAMELA/PAMELA-2003-2008.dat",
+	"sol_mod": 372,
+	"expname": "PAMELA",
+	"years": "(2003 - 2008)",
+	"line_colour": 600,
+	"marker_colour": 600,
+	"marker_style": 23
+    },
+    "PAMELACALO": {
+	"loc": "Data/Helium/EnergyPerNucleon/PAMELA/PAMELA-CALO-2006-2010.dat",
+	"sol_mod": 342,
+	"expname": "PAMELA CALO",
+	"years": "(2006 - 2010)",
+	"line_colour": 593,
+	"marker_colour": 593,
+	"marker_style": 27
+    },
+    "RUNJOB": {
+	"loc": "Data/Helium/EnergyPerNucleon/RUNJOB/RUNJOB-1995-1999.dat",
+	"sol_mod": 488,
+	"expname": "RUNJOB",
+	"years": "(1995 - 1999)",
+	"line_colour": 14,
+	"marker_colour": 14,
+	"marker_style": 24
+    },
+    "SOKOL": {
+	"loc": "Data/Helium/EnergyPerNucleon/SOKOL/SOKOL-1984-1986.dat",
+	"sol_mod": 646,
+	"expname": "SOKOL",
+	"years": "(1984 - 1986)",
+	"line_colour": 95,
+	"marker_colour": 95,
+	"marker_style": 26
+    }
+}

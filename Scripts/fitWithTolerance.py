@@ -41,59 +41,27 @@ def PlotSaveFluxMultiGraph(mg,leg,primary,outdir,emin,emax,fit_func,fname):
 
 def CalculateSigmaF(fname,grad,covMat,energy,primary,Barr=False):
 
-    if fname == 'GSHL':
-        aTerm = np.power(grad[0],2.) * covMat[0][0]
-        bTerm = np.power(grad[1],2.) * covMat[1][1]
-        cTerm = np.power(grad[2],2.) * covMat[2][2]
-        dTerm = np.power(grad[3],2.) * covMat[3][3]
+    TotalTerm = 0.0
+    for i in range(0,len(grad)):
+        for j in range(0,len(grad)):
+            Term = grad[i]*grad[j] * covMat[i][j]
+            if fname == 'GSHL':
+                if Barr and energy > 200.0:
+                    # Inflate proton uncertainties on d by factor 3
+                    if primary == 'Proton':
+                        if i == 3:
+                            Term *= 3.0
+                        if j == 3:
+                            Term *= 3.0
+                    # Inflate all other uncertainties on d by factor 2
+                    else:
+                        if i == 3:
+                            Term *= 2.0
+                        if j == 3:
+                            Term *= 2.0
+            TotalTerm += Term
 
-        abTerm = 2 * grad[0]*grad[1] * covMat[0][1]
-        acTerm = 2 * grad[0]*grad[2] * covMat[0][2]
-        adTerm = 2 * grad[0]*grad[3] * covMat[0][3]
-        bcTerm = 2 * grad[1]*grad[2] * covMat[1][2]
-        bdTerm = 2 * grad[1]*grad[3] * covMat[1][3]
-        cdTerm = 2 * grad[2]*grad[3] * covMat[2][3]
-
-        # To match Barr paper, inflate uncertainty on d above 200 GeV
-        # This is to account for larger uncertainties on calorimeter data
-        if Barr and energy > 200.0:
-            # Inflate proton uncertainties by factor 3
-            if primary == 'Proton':
-                dTerm *= 9.0
-                adTerm *= 3.0
-                bdTerm *= 3.0
-                cdTerm *= 3.0
-            # Inflate all other uncertainties by factor 2
-            else:
-                dTerm *= 4.0
-                adTerm *= 2.0
-                bdTerm *= 2.0
-                cdTerm *= 2.0
-        
-        sigmaF = np.sqrt(aTerm + bTerm + cTerm + dTerm + abTerm + acTerm + adTerm + bcTerm + bdTerm + cdTerm)
-        
-    elif fname == 'Simple':
-        aTerm = np.power(grad[0],2.) * covMat[0][0]
-        dTerm = np.power(grad[1],2.) * covMat[1][1]
-        adTerm = 2 * grad[0]*grad[1] * covMat[0][1]
-        sigmaF = np.sqrt(aTerm + dTerm + adTerm)
-
-    elif fname == 'H3a':
-        a1Term = np.power(grad[0],2.) * covMat[0][0]
-        y1Term = np.power(grad[1],2.) * covMat[1][1]
-        a2Term = np.power(grad[2],2.) * covMat[2][2]
-        y2Term = np.power(grad[3],2.) * covMat[3][3]
-
-        a1y1Term = 2 * grad[0]*grad[1] * covMat[0][1]
-        a1a2Term = 2 * grad[0]*grad[2] * covMat[0][2]
-        a1y2Term = 2 * grad[0]*grad[3] * covMat[0][3]
-        y1a2Term = 2 * grad[1]*grad[2] * covMat[1][2]
-        y1y2Term = 2 * grad[1]*grad[3] * covMat[1][3]
-        a2y2Term = 2 * grad[2]*grad[3] * covMat[2][3]
-
-        sigmaF = np.sqrt(a1Term + y1Term + a2Term + y2Term + a1y1Term + a1a2Term + a1y2Term + y1a2Term + y1y2Term + a2y2Term)
-        print sigmaF
-
+    sigmaF = np.sqrt(TotalTerm)
     return sigmaF
 
 def GenerateUncertaintyLines(emin,emax,fit_func,fname,outdir,primary,covMat,Barr=False):
@@ -312,7 +280,9 @@ if __name__ == '__main__':
                         Name of fitting function you want to use for the global 
                         fits. The choices are:
                             * GSHL
+                            * AMSGSHL (GSHL with AMS modification)
                             * Simple (Power Law)
+                            * H3a
                         """)
     parser.add_argument('--Barr',action='store_true',default=False,
                         help="Flag if performing paper a la Barr et al.")
@@ -335,7 +305,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Check requested function is valid. If not, exit.
-    allowed_functions = ['GSHL','Simple','H3a']
+    allowed_functions = ['GSHL','AMSGSHL','Simple','H3a']
     if args.fname not in allowed_functions:
         print "Requested fitting function is invalid. Please select from:"
         for allowed_function in allowed_functions:
@@ -416,7 +386,9 @@ if __name__ == '__main__':
     #########################################################
 
     # First initialise the desired fitting function
-    fit_func = InitialiseFittingFunction(args.fname,args.emin,args.emax,args.primary)
+    fit_func, FuncGood = InitialiseFittingFunction(args.fname,args.emin,args.emax,args.primary)
+    if not FuncGood:
+        sys.exit()
 
     # Load all data from dictionary in to a multigraph object
     mg,leg = CreateFluxMultiGraph(total_data_dict)

@@ -3,7 +3,13 @@ import os, sys, json
 import numpy as np
 import ROOT
 import matplotlib.pyplot as plt
-import matplotlib.patheffects as PathEffects
+try:
+    import matplotlib.patheffects as PathEffects
+    PlotMatrices = True
+except:
+    print "Could not import PathEffects. Correlation matrices will not be made."
+    PlotMatrices = False
+    
 plt.rcParams['text.usetex'] = True
 
 from argparse import ArgumentParser,ArgumentDefaultsHelpFormatter
@@ -179,7 +185,7 @@ def DrawFinalDeviationPlot(dgs, dleg, emin, emax, primary, outdir, fname):
     else:
         c1.SaveAs("%s/FinalPlots/Global%sFitDeviation.pdf"%(outdir,primary))
 
-def PlotSaveCovCorMats(covMat,fit_func,outdir,primary):
+def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True):
 
     if outdir == os.getcwd():
         outfile = open('%s/CovCorMatrices.dat'%(outdir),'w')
@@ -218,24 +224,26 @@ def PlotSaveCovCorMats(covMat,fit_func,outdir,primary):
     for i in range(0,fit_func.GetNpar()):
         ParNames.append(fit_func.GetParName(i))
 
-    plt.imshow(corMat,interpolation='none',cmap=cm.coolwarm,alpha=0.3,vmin=-1.0,vmax=1.0)
-    plt.title('%s %s Correlation Matrix'%(fit_func.GetName(),primary))
-    plt.colorbar()
-    plt.xticks(np.arange(len(ParNames)),ParNames)
-    plt.yticks(np.arange(len(ParNames)),ParNames)
-    for i in range(0,len(corMat)):
-        for j in range(0,len(corMat[0])):
-            plt.text(i, j, '%.4f'%corMat[i][j],
-                     verticalalignment='center',
-                     horizontalalignment='center',
-                     color='w',
-                     path_effects=[PathEffects.withStroke(linewidth=3,
-                                                          foreground='k')])
+    if Plot:
+
+        plt.imshow(corMat,interpolation='none',cmap=cm.coolwarm,alpha=0.3,vmin=-1.0,vmax=1.0)
+        plt.title('%s %s Correlation Matrix'%(fit_func.GetName(),primary))
+        plt.colorbar()
+        plt.xticks(np.arange(len(ParNames)),ParNames)
+        plt.yticks(np.arange(len(ParNames)),ParNames)
+        for i in range(0,len(corMat)):
+            for j in range(0,len(corMat[0])):
+                plt.text(i, j, '%.4f'%corMat[i][j],
+                         verticalalignment='center',
+                         horizontalalignment='center',
+                         color='w',
+                         path_effects=[PathEffects.withStroke(linewidth=3,
+                                                              foreground='k')])
             
-    if outdir == os.getcwd():
-        plt.savefig('%s/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
-    else:
-        plt.savefig('%s/FitReturnValues/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
+        if outdir == os.getcwd():
+            plt.savefig('%s/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
+        else:
+            plt.savefig('%s/FitReturnValues/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
 
     plt.close()
 
@@ -399,8 +407,8 @@ if __name__ == '__main__':
     covMat = fitresult.GetCovarianceMatrix()
 
     # Save covariance and correlation matrix to file
-    # Correlation matrix will also be plotted
-    PlotSaveCovCorMats(covMat,fit_func,outdir,args.primary)
+    # Correlation matrix will also be plotted if PathEffects could be imported
+    PlotSaveCovCorMats(covMat,fit_func,outdir,args.primary,Plot=PlotMatrices)
 
     # Save these best fit parameters in a list
     globalFitPar = []

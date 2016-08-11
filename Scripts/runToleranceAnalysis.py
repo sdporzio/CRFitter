@@ -179,7 +179,7 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(1,1.16)
             func.SetParameter(2,-0.33)
             func.SetParameter(3,2.60)
-            func.SetParameter(4,500)
+            func.SetParameter(4,300)
             func.SetParameter(5,1)
             func.SetParameter(6,2.58)
             FuncGood = True
@@ -729,50 +729,55 @@ if __name__ == '__main__':
     ###                                                   ###
     #########################################################
 
-    if args.outdir is None:
-        outfile2 = open('%s/Method2DeltaChi.dat'%outdir,'w')
+    if len(total_data_dict.keys()) > 1:
+
+        if args.outdir is None:
+            outfile2 = open('%s/Method2DeltaChi.dat'%outdir,'w')
+        else:
+            outfile2 = open('%s/%s/%s/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat'%(outdir,args.fname,args.primary),'w')
+        outfile2.write('# ExperimentNumber ExperimentName Chi0 ChiMin DeltaChi\n')
+
+        for v,data_to_omit in enumerate(total_data_dict.keys()):
+
+            # Create MultiGraph with one set of data excluded
+            mg, leg = CreateFluxMultiGraph(total_data_dict,data_to_omit)
+
+            # Fit this dataset with parameters fixed to global fit
+            for i in range(0,fit_func.GetNpar()):
+                fit_func.FixParameter(i,globalFitPar[i])
+            mg.Fit(args.fname,"R")
+            chi0 = fit_func.GetChisquare()
+
+            # Make a plot of this to inspect
+            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func,Global=True)
+
+            # Make a plot of the deviations to also inspect
+            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname,Global=True)
+
+            # Fit this dataset freely
+            for i in range(0,fit_func.GetNpar()):
+                fit_func.ReleaseParameter(i)
+            mg.Fit(args.fname,"R")
+            chiMin = fit_func.GetChisquare()
+
+            # Make a plot of this to inspect
+            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func)
+
+            # Make a plot of the deviations to also inspect
+            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname)
+
+            # Calculate the chi2 difference
+            deltachi = chi0-chiMin
+
+            # Write all of this out to file
+            outfile2.write('%i %s %.4f %.4f %.4f\n'%(v,
+                                                     data_to_omit,
+                                                     chi0,
+                                                     chiMin,
+                                                     deltachi))
+
+        outfile2.close()
+
     else:
-        outfile2 = open('%s/%s/%s/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat'%(outdir,args.fname,args.primary),'w')
-    outfile2.write('# ExperimentNumber ExperimentName Chi0 ChiMin DeltaChi\n')
 
-    for v,data_to_omit in enumerate(total_data_dict.keys()):
-
-        # Create MultiGraph with one set of data excluded
-        mg, leg = CreateFluxMultiGraph(total_data_dict,data_to_omit)
-
-        # Fit this dataset with parameters fixed to global fit
-        for i in range(0,fit_func.GetNpar()):
-            fit_func.FixParameter(i,globalFitPar[i])
-        mg.Fit(args.fname,"R")
-        chi0 = fit_func.GetChisquare()
-
-        # Make a plot of this to inspect
-        Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func,Global=True)
-
-        # Make a plot of the deviations to also inspect
-        Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname,Global=True)
-
-        # Fit this dataset freely
-        #fit_func = InitialiseFittingFunction(args.fname,args.emin,args.emax,args.primary)
-        for i in range(0,fit_func.GetNpar()):
-            fit_func.ReleaseParameter(i)
-        mg.Fit(args.fname,"R")
-        chiMin = fit_func.GetChisquare()
-
-        # Make a plot of this to inspect
-        Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func)
-
-        # Make a plot of the deviations to also inspect
-        Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname)
-
-        # Calculate the chi2 difference
-        deltachi = chi0-chiMin
-
-        # Write all of this out to file
-        outfile2.write('%i %s %.4f %.4f %.4f\n'%(v,
-                                                 data_to_omit,
-                                                 chi0,
-                                                 chiMin,
-                                                 deltachi))
-
-    outfile2.close()
+        print "Only one dataset has been passed to the global fitter, so the second tolerance calculation method cannot be performed."

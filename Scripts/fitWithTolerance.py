@@ -17,7 +17,7 @@ from matplotlib import cm
 
 from runToleranceAnalysis import LoadData, InitialiseFittingFunction, CreateFluxMultiGraph, CreateDeviationGraphs
 
-def PlotSaveFluxMultiGraph(mg,leg,primary,outdir,emin,emax,fit_func,fname):
+def PlotSaveFluxMultiGraph(mg,leg,primary,outdir,emin,emax,fit_func,fname,extension='pdf'):
     
     canvas = ROOT.TCanvas("c2")
     mg.SetTitle('Experimental Cosmic Ray %s Flux'%(primary))
@@ -40,9 +40,9 @@ def PlotSaveFluxMultiGraph(mg,leg,primary,outdir,emin,emax,fit_func,fname):
     canvas.SetLogx()
     leg.Draw()
     if outdir == os.getcwd():
-        canvas.SaveAs("%s/Global%sFit.pdf"%(outdir,primary))
+        canvas.SaveAs("%s/Global%sFit.%s"%(outdir,primary,extension))
     else:
-        canvas.SaveAs("%s/FinalPlots/Global%sFit.pdf"%(outdir,primary))
+        canvas.SaveAs("%s/FinalPlots/Global%sFit.%s"%(outdir,primary,extension))
     canvas.Close()
 
 def CalculateSigmaF(fname,grad,covMat,energy,primary,Barr=False):
@@ -127,7 +127,7 @@ def GenerateUncertaintyLines(emin,emax,fit_func,fname,outdir,primary,covMat,Barr
 
     return realup, realdown, realup2, realdown2
 
-def DrawFinalDeviationPlot(dgs, dleg, emin, emax, primary, outdir, fname):
+def DrawFinalDeviationPlot(dgs, dleg, emin, emax, primary, outdir, fname, extension='pdf'):
 
     # Set up style for canvas
     mystyle = ROOT.TStyle("Plain","Mystyle")
@@ -181,11 +181,11 @@ def DrawFinalDeviationPlot(dgs, dleg, emin, emax, primary, outdir, fname):
     ROOT.gPad.RedrawAxis()
 
     if outdir == os.getcwd():
-        c1.SaveAs("%s/Global%sFitDeviation.pdf"%(outdir,primary))
+        c1.SaveAs("%s/Global%sFitDeviation.%s"%(outdir,primary,extension))
     else:
-        c1.SaveAs("%s/FinalPlots/Global%sFitDeviation.pdf"%(outdir,primary))
+        c1.SaveAs("%s/FinalPlots/Global%sFitDeviation.%s"%(outdir,primary,extension))
 
-def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True):
+def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True,extension='pdf'):
 
     if outdir == os.getcwd():
         outfile = open('%s/CovCorMatrices.dat'%(outdir),'w')
@@ -241,9 +241,9 @@ def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True):
                                                               foreground='k')])
             
         if outdir == os.getcwd():
-            plt.savefig('%s/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
+            plt.savefig('%s/%s%sCorrelationMatrix.%s'%(outdir,fit_func.GetName(),primary,extension))
         else:
-            plt.savefig('%s/FitReturnValues/%s%sCorrelationMatrix.png'%(outdir,fit_func.GetName(),primary))
+            plt.savefig('%s/FitReturnValues/%s%sCorrelationMatrix.%s'%(outdir,fit_func.GetName(),primary,extension))
 
     plt.close()
 
@@ -294,7 +294,7 @@ if __name__ == '__main__':
                             * H3a
                         """)
     parser.add_argument('--Barr',action='store_true',default=False,
-                        help="Flag if performing paper a la Barr et al.")
+                        help="""Flag if performing paper a la Barr et al.""")
     parser.add_argument('--emin',type=float,default='0.5',
                         help="""Minimum energy value for fitter.""")
     parser.add_argument('--emax',type=float,default='250000',
@@ -310,6 +310,9 @@ if __name__ == '__main__':
                         create subdirectories and delete older plots if it needs
                         to, so set this carefully! If none provided, all plots
                         will be saved in CWD.""")
+    parser.add_argument('--PNG',action='store_true',default=False,
+                        help="""Flag if wanting to save plots as PNG rather 
+                        than the default of PDF.""")
 
     args = parser.parse_args()
 
@@ -320,6 +323,12 @@ if __name__ == '__main__':
         for allowed_function in allowed_functions:
             print "    %s"%allowed_function
         sys.exit()
+
+    # Check file extension
+    if args.PNG:
+        extension = 'png'
+    else:
+        extension = 'pdf'
 
     #########################################################
     ###                                                   ###
@@ -413,7 +422,7 @@ if __name__ == '__main__':
 
     # Save covariance and correlation matrix to file
     # Correlation matrix will also be plotted if PathEffects could be imported
-    PlotSaveCovCorMats(covMat,fit_func,outdir,args.primary,Plot=PlotMatrices)
+    PlotSaveCovCorMats(covMat,fit_func,outdir,args.primary,Plot=PlotMatrices,extension=extension)
 
     # Save these best fit parameters in a list
     globalFitPar = []
@@ -424,7 +433,7 @@ if __name__ == '__main__':
     SaveGlobalFit(fit_func,outdir,args.primary)
 
     # Plot and save this global fit
-    PlotSaveFluxMultiGraph(mg,leg,args.primary,outdir,args.emin,args.emax,fit_func,args.fname)
+    PlotSaveFluxMultiGraph(mg,leg,args.primary,outdir,args.emin,args.emax,fit_func,args.fname,extension=extension)
 
     #########################################################
     ###                                                   ###
@@ -439,4 +448,4 @@ if __name__ == '__main__':
     dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,U2=U2,U1=U1)
 
     # Now draw it all
-    DrawFinalDeviationPlot(dgs, dleg, args.emin, args.emax, args.primary, outdir, args.fname)
+    DrawFinalDeviationPlot(dgs, dleg, args.emin, args.emax, args.primary, outdir, args.fname,extension=extension)

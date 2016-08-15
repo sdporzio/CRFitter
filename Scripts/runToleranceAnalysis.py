@@ -359,7 +359,7 @@ def CreateDeviationGraph(data,fit_func,plot_key):
 
     return graph, leg
 
-def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,fit_func):
+def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,fit_func,extension='pdf'):
 
     canvas = ROOT.TCanvas("c2")
     graph.SetTitle('Experimental Cosmic Ray %s Flux'%(primary))
@@ -388,12 +388,12 @@ def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,f
     pt.SetLineColor(0)
     pt.Draw()
     if outdir == os.getcwd():
-        canvas.SaveAs("%s/%sGlobal%sFitParameters.pdf"%(outdir,data_to_plot,primary))
+        canvas.SaveAs("%s/%sGlobal%sFitParameters.%s"%(outdir,data_to_plot,primary,extension))
     else:
-        canvas.SaveAs("%s/%s/%s/ToleranceMethod1/TolerancePlots/%sGlobal%sFitParameters.pdf"%(outdir,fname,primary,data_to_plot,primary))
+        canvas.SaveAs("%s/%s/%s/ToleranceMethod1/TolerancePlots/%sGlobal%sFitParameters.%s"%(outdir,fname,primary,data_to_plot,primary,extension))
     canvas.Close()
 
-def Method1DeviationInspection(total_data_dict,fit_func,data_to_plot,primary,emin,emax,outdir,fname,Global=False):
+def Method1DeviationInspection(total_data_dict,fit_func,data_to_plot,primary,emin,emax,outdir,fname,Global=False,extension='pdf'):
     
     dg, dleg = CreateDeviationGraph(total_data_dict,fit_func,data_to_plot)
 
@@ -447,12 +447,12 @@ def Method1DeviationInspection(total_data_dict,fit_func,data_to_plot,primary,emi
     ROOT.gPad.RedrawAxis()
 
     if outdir == os.getcwd():
-        c1.SaveAs("%s/%sGlobal%sFitParametersDeviation.pdf"%(outdir,data_to_plot,SaveName,primary))
+        c1.SaveAs("%s/%sGlobal%sFitParametersDeviation.%s"%(outdir,data_to_plot,SaveName,primary,extension))
     else:
-        c1.SaveAs("%s/%s/%s/ToleranceMethod1/TolerancePlots/%sGlobal%sFitParametersDeviation.pdf"%(outdir,fname,primary,data_to_plot,primary))
+        c1.SaveAs("%s/%s/%s/ToleranceMethod1/TolerancePlots/%sGlobal%sFitParametersDeviation.%s"%(outdir,fname,primary,data_to_plot,primary,extension))
     c1.Close()
 
-def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_func,Global=False):
+def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_func,Global=False,extension='pdf'):
 
     canvas = ROOT.TCanvas("c2")
     mg.SetTitle('Experimental Cosmic Ray %s Flux'%(primary))
@@ -486,12 +486,12 @@ def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_
     pt.SetLineColor(0)
     pt.Draw()
     if outdir == os.getcwd():
-        canvas.SaveAs("%s/AllDataMinus%s%s%sFitParameters.pdf"%(outdir,data_to_omit,SaveName,primary))
+        canvas.SaveAs("%s/AllDataMinus%s%s%sFitParameters.%s"%(outdir,data_to_omit,SaveName,primary,extension))
     else:
-        canvas.SaveAs("%s/%s/%s/ToleranceMethod2/TolerancePlots/AllDataMinus%s%s%sFitParameters.pdf"%(outdir,fname,primary,data_to_omit,SaveName,primary))
+        canvas.SaveAs("%s/%s/%s/ToleranceMethod2/TolerancePlots/AllDataMinus%s%s%sFitParameters.%s"%(outdir,fname,primary,data_to_omit,SaveName,primary,extension))
     canvas.Close()
 
-def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emin,emax,outdir,fname,Global=False):
+def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emin,emax,outdir,fname,Global=False,extension='pdf'):
     
     dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,omit_key=data_to_omit)
 
@@ -555,9 +555,9 @@ def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emi
     ROOT.gPad.RedrawAxis()
 
     if outdir == os.getcwd():
-        c1.SaveAs("%s/AllDataMinus%s%sFitParametersDeviation.pdf"%(outdir,data_to_omit,SaveName,primary))
+        c1.SaveAs("%s/AllDataMinus%s%sFitParametersDeviation.%s"%(outdir,data_to_omit,SaveName,primary,extension))
     else:
-        c1.SaveAs("%s/%s/%s/ToleranceMethod2/TolerancePlots/AllDataMinus%s%s%sFitParametersDeviation.pdf"%(outdir,fname,primary,data_to_omit,SaveName,primary))
+        c1.SaveAs("%s/%s/%s/ToleranceMethod2/TolerancePlots/AllDataMinus%s%s%sFitParametersDeviation.%s"%(outdir,fname,primary,data_to_omit,SaveName,primary,extension))
     c1.Close()
         
 if __name__ == '__main__':
@@ -579,7 +579,7 @@ if __name__ == '__main__':
                             * H3a
                         """)
     parser.add_argument('--Barr',action='store_true',default=False,
-                        help="Flag if performing paper a la Barr et al.")
+                        help="""Flag if performing paper a la Barr et al.""")
     parser.add_argument('--emin',type=float,default='0.5',
                         help="""Minimum energy value for fitter""")
     parser.add_argument('--emax',type=float,default='250000',
@@ -595,6 +595,9 @@ if __name__ == '__main__':
                         create subdirectories and delete older plots if it needs
                         to, so set this carefully! If none provided, all plots
                         will be saved in CWD.""")
+    parser.add_argument('--PNG',action='store_true',default=False,
+                        help="""Flag if wanting to save plots as PNG rather 
+                        than the default of PDF.""")
 
     args = parser.parse_args()
 
@@ -605,6 +608,12 @@ if __name__ == '__main__':
         for allowed_function in allowed_functions:
             print "    %s"%allowed_function
         sys.exit()
+
+    # Check file extension
+    if args.PNG:
+        extension = 'png'
+    else:
+        extension = 'pdf'
 
     #########################################################
     ###                                                   ###
@@ -709,10 +718,10 @@ if __name__ == '__main__':
         chi = fit_func.GetChisquare()
 
         # Make a plot of this to inspect
-        Method1FitInspection(graph,leg,args.primary,data_key,outdir,args.fname,args.emin,args.emax,fit_func)
+        Method1FitInspection(graph,leg,args.primary,data_key,outdir,args.fname,args.emin,args.emax,fit_func,extension=extension)
 
         # Make a plot of the deviations to also inspect
-        Method1DeviationInspection(total_data_dict,fit_func,data_key,args.primary,args.emin,args.emax,outdir,args.fname)
+        Method1DeviationInspection(total_data_dict,fit_func,data_key,args.primary,args.emin,args.emax,outdir,args.fname,extension=extension)
         
         outfile1.write('%i %s %i %.4f %.4f %.4f\n'%(v,
                                                     data_key,
@@ -749,10 +758,10 @@ if __name__ == '__main__':
             chi0 = fit_func.GetChisquare()
 
             # Make a plot of this to inspect
-            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func,Global=True)
+            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func,Global=True,extension=extension)
 
             # Make a plot of the deviations to also inspect
-            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname,Global=True)
+            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname,Global=True,extension=extension)
 
             # Fit this dataset freely
             for i in range(0,fit_func.GetNpar()):
@@ -761,10 +770,10 @@ if __name__ == '__main__':
             chiMin = fit_func.GetChisquare()
 
             # Make a plot of this to inspect
-            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func)
+            Method2FitInspection(mg,leg,args.primary,data_to_omit,outdir,args.fname,args.emin,args.emax,fit_func,extension=extension)
 
             # Make a plot of the deviations to also inspect
-            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname)
+            Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,args.primary,args.emin,args.emax,outdir,args.fname,extension=extension)
 
             # Calculate the chi2 difference
             deltachi = chi0-chiMin

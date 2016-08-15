@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!Data
+!Scripts
+!runCRFitter.sh
+# etc...
+
+# ...even if they are in subdirectories
+!*/

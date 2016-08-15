@@ -367,9 +367,12 @@ def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,f
     xmin = '1E%i'%(int(np.log10(emin)))
     xmax = '1E%i'%(int(np.log10(emax))+1)
     graph.GetXaxis().SetLimits(float(xmin),float(xmax))
+    graph.GetXaxis().SetLabelOffset(0.001)
+    graph.GetXaxis().SetTitleOffset(0.85)
     ymin = '1E%i'%(int(np.log10(fit_func.Eval(emax)))-1)
     ymax = '1E%i'%(int(np.log10(fit_func.Eval(emin)))+1)
     graph.GetYaxis().SetRangeUser(float(ymin),float(ymax))
+    graph.GetYaxis().SetTitleOffset(0.95)
 
     # H3a is parameterised as total cosmic ray energy
     if fname == 'H3a':
@@ -460,9 +463,12 @@ def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_
     xmin = '1E%i'%(int(np.log10(emin)))
     xmax = '1E%i'%(int(np.log10(emax))+1)
     mg.GetXaxis().SetLimits(float(xmin),float(xmax))
+    mg.GetXaxis().SetLabelOffset(0.001)
+    mg.GetXaxis().SetTitleOffset(0.85)
     ymin = '1E%i'%(int(np.log10(fit_func.Eval(emax)))-1)
     ymax = '1E%i'%(int(np.log10(fit_func.Eval(emin)))+1)
     mg.GetYaxis().SetRangeUser(float(ymin),float(ymax))
+    mg.GetYaxis().SetTitleOffset(0.95)
 
     # H3a is parameterised as total cosmic ray energy
     if fname == 'H3a':

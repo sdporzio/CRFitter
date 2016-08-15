@@ -563,7 +563,7 @@ def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emi
 if __name__ == '__main__':
     
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--data',type=str,
+    parser.add_argument('--data',type=str,required=True,
                         help="""JSON file containing locations of all of the 
                         data you want to include in the fit.""")
     parser.add_argument('--primary',type=str,default='Proton',

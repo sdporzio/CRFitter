@@ -274,10 +274,11 @@ def SaveGlobalFit(fit_func,outdir,primary):
 if __name__ == '__main__':
 
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--tolerance',type=str,
-                        help="""DAT file containing delta chi values from which
-                        to calculate the tolerance.""")
-    parser.add_argument('--data',type=str,
+    parser.add_argument('--tolerance',type=str,required=True,
+                        help="""Either provide path to a DAT file containing 
+                        delta chi values from which to calculate the tolerance 
+                        or a number to use.""")
+    parser.add_argument('--data',type=str,required=True,
                         help="""JSON file containing locations of all of the 
                         data you want to include in the fit.""")
     parser.add_argument('--primary',type=str,default='Proton',
@@ -357,19 +358,23 @@ if __name__ == '__main__':
     ###                                                   ###
     #########################################################
 
-    chidata = np.genfromtxt(args.tolerance,
-                            delimiter = " ",
-                            names=True,
-                            dtype=None)
+    try:
+        float(args.tolerance)
+        tolerance = float(args.tolerance)
+    
+    except:
+        chidata = np.genfromtxt(args.tolerance,
+                                delimiter = " ",
+                                names=True,
+                                dtype=None)
 
-    # Calculate delta chi sum
-    totaldeltachi = np.sum(chidata['DeltaChi'])
+        # Calculate delta chi sum
+        totaldeltachi = np.sum(chidata['DeltaChi'])
 
-    # Tolerance is then square root of this
-    tolerance = np.sqrt(totaldeltachi)
+        # Tolerance is then square root of this
+        tolerance = np.sqrt(totaldeltachi)
 
     ROOT.TVirtualFitter.SetErrorDef(tolerance)
-    
     
     #########################################################
     ###                                                   ###

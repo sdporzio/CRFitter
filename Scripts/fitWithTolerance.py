@@ -15,30 +15,42 @@ plt.rcParams['text.usetex'] = True
 from argparse import ArgumentParser,ArgumentDefaultsHelpFormatter
 from matplotlib import cm
 
-from runToleranceAnalysis import LoadData, InitialiseFittingFunction, CreateFluxMultiGraph, CreateDeviationGraphs
+from runToleranceAnalysis import LoadData, InitialiseFittingFunction, CreateFluxMultiGraph, CreateFluxGraphArray, CreateDeviationGraphs
 
-def PlotSaveFluxMultiGraph(mg,leg,primary,outdir,emin,emax,fit_func,fname,extension='pdf'):
+def PlotSaveFluxMultiGraph(fgs,leg,U1,U2,D1,D2,primary,outdir,emin,emax,fit_func,fname,extension='pdf'):
     
     canvas = ROOT.TCanvas("c2")
-    mg.SetTitle('Experimental Cosmic Ray %s Flux'%(primary))
-    mg.Draw("AP")
+    # Draw the uncertainties first so they end up behind the data
+    U2.Draw("AF")
+    U2.SetTitle("Experimental Cosmic Ray %s Flux"%primary)
+    U2.GetYaxis().SetTitle('Flux [ (GeV/n m^{2} s sr)^{-1} ]')
     xmin = '1E%i'%(int(np.log10(emin)))
     xmax = '1E%i'%(int(np.log10(emax))+1)
-    mg.GetXaxis().SetLimits(float(xmin),float(xmax))
-    mg.GetXaxis().SetLabelOffset(0.001)
-    mg.GetXaxis().SetTitleOffset(1.2)
+    U2.GetXaxis().SetLimits(float(xmin),float(xmax))
+    U2.GetXaxis().SetLabelOffset(0.001)
+    U2.GetXaxis().SetTitleOffset(1.2)
     ymin = '1E%i'%(int(np.log10(fit_func.Eval(emax)))-1)
     ymax = '1E%i'%(int(np.log10(fit_func.Eval(emin)))+1)
-    mg.GetYaxis().SetRangeUser(float(ymin),float(ymax))
-    mg.GetYaxis().SetTitleOffset(1.1)
-
+    U2.GetYaxis().SetRangeUser(float(ymin),float(ymax))
+    U2.GetYaxis().SetTitleOffset(1.1)
     # H3a is parameterised as total cosmic ray energy
     if fname == 'H3a':
-        mg.GetXaxis().SetTitle('Primary Energy [GeV]')
+        U2.GetXaxis().SetTitle('Primary Energy [GeV]')
     # GSHL and power law are in terms of energy per nucleon
     else:
-        mg.GetXaxis().SetTitle('Primary Energy [GeV/n]')
-    mg.GetYaxis().SetTitle('Flux [ (GeV/n m^{2} s sr)^{-1} ]')
+        U2.GetXaxis().SetTitle('Primary Energy [GeV/n]')
+    D2.Draw("Fsame")
+    U1.Draw("Fsame")
+    D1.Draw("Fsame")
+
+    fit_func.SetLineWidth(1)
+    fit_func.SetLineColor(1)
+    fit_func.Draw("Lsame")
+
+    # Now draw the data
+    # This isn't done as a multigraph because ROOT
+    for fg in fgs:
+        fg.Draw("PEsame")
     canvas.SetLogy()
     canvas.SetLogx()
     leg.Draw()
@@ -73,7 +85,51 @@ def CalculateSigmaF(fname,grad,covMat,energy,primary,Barr=False):
     sigmaF = np.sqrt(TotalTerm)
     return sigmaF
 
-def GenerateUncertaintyLines(emin,emax,fit_func,fname,outdir,primary,covMat,Barr=False):
+def GenerateFitUncertaintyLines(emin,emax,fit_func,fname,primary,covMat,Barr=False):
+
+    realup = ROOT.TGraph()
+    realdown = ROOT.TGraph()
+    realup2 = ROOT.TGraph()
+    realdown2 = ROOT.TGraph()
+
+    realup.SetPoint(0,emin,fit_func.Eval(emin))
+    realdown.SetPoint(0,emin,fit_func.Eval(emin))
+    realup2.SetPoint(0,emin,fit_func.Eval(emin))
+    realdown2.SetPoint(0,emin,fit_func.Eval(emin))
+
+    nPoint = 200
+    step = (np.log10(emax)-np.log10(emin))/nPoint
+
+    for i in range(0,nPoint+1):
+        x = np.array([np.power(10,np.log10(emin)+i*step)])
+        grad = np.empty(fit_func.GetNpar())
+        fit_func.GradientPar(x,grad,0.001)
+        sigmaF = CalculateSigmaF(fname,grad,covMat,x[0],primary,Barr)
+        realup.SetPoint(i+1,x[0],sigmaF+fit_func.Eval(x[0]))
+        realdown.SetPoint(i+1,x[0],-sigmaF+fit_func.Eval(x[0]))
+        realup2.SetPoint(i+1,x[0],2*sigmaF+fit_func.Eval(x[0]))
+        realdown2.SetPoint(i+1,x[0],-2*sigmaF+fit_func.Eval(x[0]))
+
+    for i in range(0,nPoint+1):
+        en = np.power(10,np.log10(emin)+(nPoint-i)*step)
+        realup.SetPoint(realup.GetN(),en,fit_func.Eval(en))
+        realdown.SetPoint(realdown.GetN(),en,fit_func.Eval(en))
+        realup2.SetPoint(realup2.GetN(),en,fit_func.Eval(en))
+        realdown2.SetPoint(realdown2.GetN(),en,fit_func.Eval(en))
+        
+    realup.SetFillColor(390);
+    realup.SetLineColor(390);
+    realdown.SetFillColor(390);
+    realdown.SetLineColor(390);
+
+    realup2.SetFillColor(406);
+    realup2.SetLineColor(406);
+    realdown2.SetFillColor(406);
+    realdown2.SetLineColor(406);
+
+    return realup, realdown, realup2, realdown2
+
+def GenerateDeviationUncertaintyLines(emin,emax,fit_func,fname,outdir,primary,covMat,Barr=False):
 
     if outdir == os.getcwd():
         outfile1 = open('%s/%sOneSigmaContour.dat'%(outdir,fname),'w')
@@ -130,7 +186,7 @@ def GenerateUncertaintyLines(emin,emax,fit_func,fname,outdir,primary,covMat,Barr
 
     return realup, realdown, realup2, realdown2
 
-def DrawFinalDeviationPlot(dgs, dleg, emin, emax, primary, outdir, fname, extension='pdf'):
+def DrawFinalDeviationPlot(dgs, dleg, U1, U2, D1, D2, emin, emax, primary, outdir, fname, extension='pdf'):
 
     # Set up style for canvas
     mystyle = ROOT.TStyle("Plain","Mystyle")
@@ -435,8 +491,13 @@ if __name__ == '__main__':
     # Also save them to file
     SaveGlobalFit(fit_func,outdir,args.primary)
 
+    # Calculate uncertainty contours for fit plot
+    FitU1, FitD1, FitU2, FitD2 = GenerateFitUncertaintyLines(args.emin, args.emax,fit_func,args.fname,args.primary,covMat,args.Barr)
+    # Create flux grah array with appropriate legend entries
+    fgs, fleg = CreateFluxGraphArray(total_data_dict,U2=FitU2,U1=FitU1)
+
     # Plot and save this global fit
-    PlotSaveFluxMultiGraph(mg,leg,args.primary,outdir,args.emin,args.emax,fit_func,args.fname,extension=extension)
+    PlotSaveFluxMultiGraph(fgs,fleg,FitU1,FitU2,FitD1,FitD2,args.primary,outdir,args.emin,args.emax,fit_func,args.fname,extension=extension)
 
     #########################################################
     ###                                                   ###
@@ -445,10 +506,10 @@ if __name__ == '__main__':
     #########################################################
 
     # The 1 and 2 sigma bands are 4 different TGraphs
-    U1, D1, U2, D2 = GenerateUncertaintyLines(args.emin,args.emax,fit_func,args.fname,outdir,args.primary,covMat,args.Barr)
+    DevU1, DevD1, DevU2, DevD2 = GenerateDeviationUncertaintyLines(args.emin,args.emax,fit_func,args.fname,outdir,args.primary,covMat,args.Barr)
 
     # Make all of the deviation graphs
-    dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,U2=U2,U1=U1)
+    dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,U2=DevU2,U1=DevU1)
 
     # Now draw it all
-    DrawFinalDeviationPlot(dgs, dleg, args.emin, args.emax, args.primary, outdir, args.fname,extension=extension)
+    DrawFinalDeviationPlot(dgs, dleg, DevU1, DevU2, DevD1, DevD2, args.emin, args.emax, args.primary, outdir, args.fname,extension=extension)

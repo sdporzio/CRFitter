@@ -241,9 +241,10 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
 def CreateFluxMultiGraph(data,omit_key=None):
 
     mg = ROOT.TMultiGraph()
-    leg = ROOT.TLegend(0.5, 0.6, .89, .89)
+    leg = ROOT.TLegend(0.16, 0.15, 0.6, 0.3)
     leg.SetBorderSize(0)
     leg.SetFillStyle(0)
+    leg.SetNColumns(2)
 
     for data_key in data.keys():
         if omit_key is None or omit_key != data_key:
@@ -266,6 +267,40 @@ def CreateFluxMultiGraph(data,omit_key=None):
                                         data[data_key]['years']))
 
     return mg, leg
+
+def CreateFluxGraphArray(data,omit_key=None,U2=None,U1=None):
+
+    fgs = []
+    leg = ROOT.TLegend(0.16, 0.15, 0.6, 0.3)
+    leg.SetBorderSize(0)
+    leg.SetFillStyle(0)
+    leg.SetNColumns(2)
+
+    if U2 is not None:
+        leg.AddEntry(U1,"1 sigma contour")
+        leg.AddEntry(U2,"2 sigma contour")
+
+    for data_key in data.keys():
+        if omit_key is None or omit_key != data_key:
+            graph = ROOT.TGraphAsymmErrors()
+            for j in range(0,len(data[data_key]['en'])):
+                graph.SetPoint(j,
+                               data[data_key]['en'][j],
+                               data[data_key]['flux'][j])
+                graph.SetPointError(j,0,0,
+                                    data[data_key]['flux_low'][j],
+                                    data[data_key]['flux_high'][j])
+            graph.SetLineColor(data[data_key]['line_colour'])
+            graph.SetMarkerColor(data[data_key]['marker_colour'])
+            graph.SetLineWidth(1)
+            graph.SetMarkerSize(1)
+            graph.SetMarkerStyle(data[data_key]['marker_style'])
+            graph.SetFillColor(0)
+            leg.AddEntry(graph,"%s %s"%(data[data_key]['expname'],
+                                        data[data_key]['years']))
+            fgs.append(graph)
+
+    return fgs, leg
 
 def CreateFluxSingleGraph(data,include_key=None):
 

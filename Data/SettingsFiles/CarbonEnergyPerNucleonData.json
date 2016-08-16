@@ -1,0 +1,183 @@
+{
+    "ACE-CRIS": {
+        "1": {
+            "loc": "Data/Carbon/ACE-CRIS/data_exp1.dat",
+	    "sol_mod": 425
+	},
+	"2": {
+	    "loc": "Data/Carbon/ACE-CRIS/data_exp2.dat",
+	    "sol_mod": 508
+	},
+	"3": {
+	    "loc": "Data/Carbon/ACE-CRIS/data_exp3.dat",
+	    "sol_mod": 917
+	},
+	"4": {
+	    "loc": "Data/Carbon/ACE-CRIS/data_exp4.dat",
+	    "sol_mod": 266
+	},
+	"expname": "ACE-CRIS",
+	"years": "(1997 - 2010)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "ATIC02": {
+	"1": {
+	    "loc": "Data/Carbon/ATIC02/data_exp5.dat",
+	    "sol_mod": 909
+	},
+	"expname": "ATIC02",
+	"years": "(1997 - 2010)",
+	"line_colour": 607,
+	"marker_colour": 607,
+	"marker_style": 25
+    },
+    "Balloon": {
+	"1": {
+	    "loc": "Data/Carbon/Balloon/data_exp6.dat",
+	    "sol_mod": 386
+	},
+	"2": {
+	    "loc": "Data/Carbon/Balloon/data_exp7.dat",
+	    "sol_mod": 651
+	},
+	"3": {
+	    "loc": "Data/Carbon/Balloon/data_exp8.dat",
+	    "sol_mod": 482
+	},
+	"4": {
+	    "loc": "Data/Carbon/Balloon/data_exp9.dat",
+	    "sol_mod": 461
+	},
+	"5": {
+	    "loc": "Data/Carbon/Balloon/data_exp10.dat",
+	    "sol_mod": 466
+	},
+	"6": {
+	    "loc": "Data/Carbon/Balloon/data_exp11.dat",
+	    "sol_mod": 551
+	},
+	"7": {
+	    "loc": "Data/Carbon/Balloon/data_exp12.dat",
+	    "sol_mod": 407
+	},
+	"8": {
+	    "loc": "Data/Carbon/Balloon/data_exp13.dat",
+	    "sol_mod": 408
+	},
+	"9": {
+	    "loc": "Data/Carbon/Balloon/data_exp14.dat",
+	    "sol_mod": 475
+	},
+	"10": {
+	    "loc": "Data/Carbon/Balloon/data_exp15.dat",
+	    "sol_mod": 475
+	},
+	"11": {
+	    "loc": "Data/Carbon/Balloon/data_exp16.dat",
+	    "sol_mod": 1190
+	},
+	"12": {
+	    "loc": "Data/Carbon/Balloon/data_exp17.dat",
+	    "sol_mod": 434
+	},
+	"13": {
+	    "loc": "Data/Carbon/Balloon/data_exp18.dat",
+	    "sol_mod": 586
+        },
+	"expname": "Balloon",
+	"years": "(1964 - 1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "CREAM-II": {
+	"loc": "Data/Carbon/CREAM-II/data_exp19.dat",
+	"sol_mod": 530,
+	"expname": "CREAM II",
+	"years": "(2005 - 2006)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "CRN-SpaceLab": {
+	"loc": "Data/Carbon/CRN-Spacelab2/data_exp20.dat",
+	"sol_mod": 544,
+	"expname": "CRN-SpaceLab 2",
+	"years": "(1985)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 22
+    },
+    "HEAO3-C2": {
+	"loc": "Data/Carbon/HEAO3-C2/data_exp21.dat",
+	"sol_mod": 742,
+	"expname": "HEAO3-C2",
+	"years": "(1979 - 1980)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+    },
+    "IMP": {
+	"1": {
+	    "loc": "Data/Carbon/IMP/data_exp22.dat",
+	    "sol_mod": 835
+	},
+	"2": {
+	    "loc": "Data/Carbon/IMP/data_exp23.dat",
+	    "sol_mod": 487
+	},
+	"expname": "IMP",
+	"years": "(1969 - 1973)",
+	"line_colour": 6,
+	"marker_colour": 6,
+	"marker_style": 25
+    },
+    "OGO": {
+	"1": {
+	    "loc": "Data/Carbon/OGO/data_exp24.dat",
+	    "sol_mod": 400
+	},
+	"2": {
+	    "loc": "Data/Carbon/OGO/data_exp25.dat",
+	    "sol_mod": 352
+	},
+	"3": {
+	    "loc": "Data/Carbon/OGO/data_exp26.dat",
+	    "sol_mod": 734
+	},
+	"expname": "OGO",
+	"years": "(1964 - 1968)",
+	"line_colour": 600,
+	"marker_colour": 600,
+	"marker_style": 23
+    },
+    "PAMELA": {
+	"loc": "Data/Carbon/PAMELA/data_exp27.dat",
+	"sol_mod": 383,
+	"expname": "PAMELA",
+	"years": "(2006 - 2008)",
+	"line_colour": 402,
+	"marker_colour": 402,
+	"marker_style": 30
+    },
+    "TRACER06": {
+	"loc": "Data/Carbon/TRACER06/data_exp28.dat",
+	"sol_mod": 443,
+	"expname": "TRACER06",
+	"years": "(2006 - 2007)",
+	"line_colour": 619,
+	"marker_colour": 619,
+	"marker_style": 25
+    },
+    "Voyager1": {
+	"loc": "Data/Carbon/Voyager1/data_exp29.dat",
+	"sol_mod": 570,
+	"expname": "Voyager1",
+	"years": "(2009 - 2012)",
+	"line_colour": 603,
+	"marker_colour": 603,
+	"marker_style": 25
+    }
+}

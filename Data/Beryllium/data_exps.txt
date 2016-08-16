@@ -1,0 +1,14 @@
+#        9Be and Be
+#   file_name    number_data  qty  exp_name
+files/365802866/data_exp1.dat       6      ACE-CRIS(1998/01-1999/01)   Be
+files/365802866/data_exp2.dat       3      Balloon(1957/09)   Be
+files/365802866/data_exp3.dat       6      Balloon(1971/09+1972/10)   Be
+files/365802866/data_exp4.dat       9      Balloon(1972/10)   Be
+files/365802866/data_exp5.dat       8      Balloon(1974/07+1974/08+1976/09)   Be
+files/365802866/data_exp6.dat      23      Balloon(1977/09)   Be
+files/365802866/data_exp7.dat       1      Balloon(1977/09)   9Be
+files/365802866/data_exp8.dat       1      Balloon(1991/09)   Be
+files/365802866/data_exp9.dat       7      Balloon(66/07+67/05-06-07)   Be
+files/365802866/data_exp10.dat      13      HEAO3-C2(1979/10-1980/06)   Be
+files/365802866/data_exp11.dat       4      IMP5(1969/06-1970/06)   Be
+files/365802866/data_exp12.dat       2      OGO1(1965/03-1965/06)   Be

@@ -1,0 +1,7 @@
+data_exps.txt
+  contains a description of the data files generated
+  (one file per sub-experiment (different flight times
+  correspond to different sub-experiments)
+
+data_exp*.dat
+  contains the data (<E>, E range, measurement and errors)

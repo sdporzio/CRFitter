@@ -1,0 +1,91 @@
+{
+    "ACE-CRIS": {
+	"1": {
+	    "loc": "Data/Aluminium/ACE-CRIS/data_exp1.dat",
+	    "sol_mod": 425
+	},
+	"2": {
+	    "loc": "Data/Aluminium/ACE-CRIS/data_exp2.dat",
+	    "sol_mod": 917
+	},
+	"3": {
+	    "loc": "Data/Aluminium/ACE-CRIS/data_exp3.dat",
+	    "sol_mod": 266
+	},
+	"expname": "ACE-CRIS",
+	"years": "(1997 - 2010)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "ALICE": {
+	"1": {
+	    "loc": "Data/Aluminium/ALICE/data_exp4.dat",
+	    "sol_mod": 468
+	},
+	"expname": "ALICE",
+	"years": "(1997 - 2010)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+
+
+
+    "Balloon": {
+	"1": {
+	    "loc": "Data/Aluminium/Balloon/data_exp5.dat",
+	    "sol_mod": 761
+	},
+	"2": {
+	    "loc": "Data/Aluminium/Balloon/data_exp6.dat",
+	    "sol_mod": 482
+	},
+	"3": {
+	    "loc": "Data/Aluminium/Balloon/data_exp7.dat",
+	    "sol_mod": 461
+	},
+	"4": {
+	    "loc": "Data/Aluminium/Balloon/data_exp8.dat",
+	    "sol_mod": 466
+	},
+	"5": {
+	    "loc": "Data/Aluminium/Balloon/data_exp9.dat",
+	    "sol_mod": 551
+	
+	},
+	"expname": "Balloon",
+	"years": "(1964 - 1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+   
+     "CRISIS": {
+	"1": {
+	    "loc": "Data/Aluminium/CRISIS/data_exp10.dat",
+	    "sol_mod": 417
+	},
+        "2": {
+             "loc": "Data/Aluminium/CRISIS/data_exp11.dat",
+	    "sol_mod": 417
+
+        },
+	"expname": "CRISIS",
+	"years": "(1997 - 2010)",
+	"line_colour": 600,
+	"marker_colour": 600,
+	"marker_style": 23
+    },
+ 
+    "HEAO3-C2": {
+	"loc": "Data/Aluminium/HEAO3-C2/data_exp12.dat",
+	"sol_mod": 742,
+	"expname": "HEAO3-C2",
+	"years": "(1979 - 1980)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+   
+    }
+}

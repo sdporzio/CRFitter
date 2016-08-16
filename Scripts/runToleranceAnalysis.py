@@ -155,6 +155,12 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(2,-0.33)
             func.SetParameter(3,2.60)
             FuncGood = True
+        elif primary == 'Iron':
+            func.SetParameter(0,0.05)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
         else:
             print "%s currently not supported with this parameterisation. Please choose another"%primary
             FuncGood = False

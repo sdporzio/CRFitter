@@ -1,0 +1,193 @@
+{
+    "ACE-CRIS": {
+	"1": {
+	    "loc": "Data/Iron/ACE-CRIS/ACE-CRIS-1997-1998.dat",
+	    "sol_mod": 425
+	},
+	"2": {
+	    "loc": "Data/Iron/ACE-CRIS/ACE-CRIS-2001-2003.dat",
+	    "sol_mod": 917
+	},
+	"3": {
+	    "loc": "Data/Iron/ACE-CRIS/ACE-CRIS-2009-2010.dat",
+	    "sol_mod": 266
+	},
+	"expname": "ACE-CRIS",
+	"years": "(1997 - 2010)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 25
+    },
+    "ALICE": {
+	"loc": "Data/Iron/ALICE/ALICE-1987.dat",
+	"sol_mod": 468,
+	"expname": "ALICE",
+	"years": "(1987)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 25
+    },
+    "ATIC02": {
+	"loc": "Data/Iron/ATIC/ATIC02-2003.dat",
+	"sol_mod": 909,
+	"expname": "ATIC02",
+	"years": "(2003)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "Balloon68": {
+	"loc": "Data/Iron/Balloon/Balloon-1968.dat",
+	"sol_mod": 761,
+	"expname": "Balloon",
+	"years": "(1968)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "Balloon73": {
+	"loc": "Data/Iron/Balloon/Balloon-1973.dat",
+	"sol_mod": 466,
+	"expname": "Balloon",
+	"years": "(1973)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon74-76": {
+	"loc": "Data/Iron/Balloon/Balloon-1974-1976.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon74": {
+	"loc": "Data/Iron/Balloon/Balloon-1974.dat",
+	"sol_mod": 630,
+	"expname": "Balloon",
+	"years": "(1974)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon75": {
+	"loc": "Data/Iron/Balloon/Balloon-1975.dat",
+	"sol_mod": 436,
+	"expname": "Balloon",
+	"years": "(1975)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "Balloon76": {
+	"loc": "Data/Iron/Balloon/Balloon-1976.dat",
+	"sol_mod": 407,
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 32
+    },
+    "Balloon87-91": {
+	"loc": "Data/Iron/Balloon/Balloon-1987-1991.dat",
+	"sol_mod": 765,
+	"expname": "Balloon",
+	"years": "(1987 - 1991)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon89-91": {
+	"loc": "Data/Iron/Balloon/Balloon-1989-1991.dat",
+	"sol_mod": 1203,
+	"expname": "Balloon",
+	"years": "(1989 - 1991)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
+    },
+    "CREAM-II": {
+	"loc": "Data/Iron/CREAM/CREAM-II-2005-2006.dat",
+	"sol_mod": 530,
+	"expname": "CREAM II",
+	"years": "(2005 - 2006)",
+	"line_colour": 434,
+	"marker_colour": 434,
+	"marker_style": 28
+    },
+    "CRISIS": {
+	"loc": "Data/Iron/CRISIS/CRISIS-1977.dat",
+	"sol_mod": 417,
+	"expname": "CRISIS",
+	"years": "(1977)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 25
+    },
+    "CRN-SpaceLab": {
+	"loc": "Data/Iron/CRN-SpaceLab/CRN-SpaceLab2-1985.dat",
+	"sol_mod": 544,
+	"expname": "CRN-SpaceLab 2",
+	"years": "(1985)",
+	"line_colour": 416,
+	"marker_colour": 416,
+	"marker_style": 22
+    },
+    "HEAO3-C2": {
+	"loc": "Data/Iron/HEAO3-C2/HEAO3-C2-1979-1980.dat",
+	"sol_mod": 742,
+	"expname": "HEAO3-C2",
+	"years": "(1979 - 1980)",
+	"line_colour": 49,
+	"marker_colour": 49,
+	"marker_style": 30
+    },
+    "JACEE": {
+	"loc": "Data/Iron/JACEE/JACEE-1979-1995.dat",
+	"sol_mod": 583,
+	"expname": "JACEE",
+	"years": "(1979 - 1995)",
+	"line_colour": 6,
+	"marker_colour": 6,
+	"marker_style": 25
+    },
+    "RUNJOB": {
+	"loc": "Data/Iron/RUNJOB/RUNJOB-1995-1999.dat",
+	"sol_mod": 488,
+	"expname": "RUNJOB",
+	"years": "(1995 - 1999)",
+	"line_colour": 14,
+	"marker_colour": 14,
+	"marker_style": 24
+    },
+    "SOKOL": {
+	"loc": "Data/Iron/SOKOL/SOKOL-1984-1986.dat",
+	"sol_mod": 646,
+	"expname": "SOKOL",
+	"years": "(1984 - 1986)",
+	"line_colour": 95,
+	"marker_colour": 95,
+	"marker_style": 26
+    },
+    "TRACER": {
+	"1": {
+	    "loc": "Data/Iron/TRACER/TRACER06-2006.dat",
+	    "sol_mod": 443
+	},
+	"2": {
+	    "loc": "Data/Iron/TRACER/TRACER03-2003.dat",
+	    "sol_mod": 930
+	},
+	"3": {
+	    "loc": "Data/Iron/TRACER/TRACER99-1999.dat",
+	    "sol_mod": 691
+	},
+	"expname": "TRACER",
+	"years": "(1999 - 2006)",
+	"line_colour": 632,
+	"marker_colour": 632,
+	"marker_style": 22
+    }
+}

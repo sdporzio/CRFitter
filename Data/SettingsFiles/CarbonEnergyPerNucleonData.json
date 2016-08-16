@@ -23,74 +23,124 @@
 	"marker_style": 25
     },
     "ATIC02": {
-	"1": {
-	    "loc": "Data/Carbon/ATIC02/data_exp5.dat",
-	    "sol_mod": 909
-	},
+	"loc": "Data/Carbon/ATIC02/data_exp5.dat",
+	"sol_mod": 909,
 	"expname": "ATIC02",
-	"years": "(1997 - 2010)",
+	"years": "(2003)",
 	"line_colour": 607,
 	"marker_colour": 607,
 	"marker_style": 25
     },
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Carbon/Balloon/data_exp6.dat",
-	    "sol_mod": 386
-	},
-	"2": {
-	    "loc": "Data/Carbon/Balloon/data_exp7.dat",
-	    "sol_mod": 651
-	},
-	"3": {
-	    "loc": "Data/Carbon/Balloon/data_exp8.dat",
-	    "sol_mod": 482
-	},
-	"4": {
-	    "loc": "Data/Carbon/Balloon/data_exp9.dat",
-	    "sol_mod": 461
-	},
-	"5": {
-	    "loc": "Data/Carbon/Balloon/data_exp10.dat",
-	    "sol_mod": 466
-	},
-	"6": {
-	    "loc": "Data/Carbon/Balloon/data_exp11.dat",
-	    "sol_mod": 551
-	},
-	"7": {
-	    "loc": "Data/Carbon/Balloon/data_exp12.dat",
-	    "sol_mod": 407
-	},
-	"8": {
-	    "loc": "Data/Carbon/Balloon/data_exp13.dat",
-	    "sol_mod": 408
-	},
-	"9": {
-	    "loc": "Data/Carbon/Balloon/data_exp14.dat",
-	    "sol_mod": 475
-	},
-	"10": {
-	    "loc": "Data/Carbon/Balloon/data_exp15.dat",
-	    "sol_mod": 475
-	},
-	"11": {
-	    "loc": "Data/Carbon/Balloon/data_exp16.dat",
-	    "sol_mod": 1190
-	},
-	"12": {
-	    "loc": "Data/Carbon/Balloon/data_exp17.dat",
-	    "sol_mod": 434
-	},
-	"13": {
-	    "loc": "Data/Carbon/Balloon/data_exp18.dat",
-	    "sol_mod": 586
-        },
+    "Balloon65": {
+	"loc": "Data/Carbon/Balloon/data_exp6.dat",
+	"sol_mod": 386,
+	"expname": "Balloon",
+	"years": "(1965)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 25
+    },
+    "Balloon70-71": {
+	"loc": "Data/Carbon/Balloon/data_exp7.dat",
+	"sol_mod": 651,
+	"expname": "Balloon",
+	"years": "(1970 - 1971)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon71-72": {
+	"loc": "Data/Carbon/Balloon/data_exp8.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon72": {
+	"loc": "Data/Carbon/Balloon/data_exp9.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon73": {
+	"loc": "Data/Carbon/Balloon/data_exp10.dat",
+	"sol_mod": 466,
 	"expname": "Balloon",
 	"years": "(1964 - 1977)",
 	"line_colour": 635,
 	"marker_colour": 635,
-	"marker_style": 25
+	"marker_style": 30
+    },
+    "Balloon74-76": {
+	"loc": "Data/Carbon/Balloon/data_exp11.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon76": {
+	"1": {
+	    "loc": "Data/Carbon/Balloon/data_exp12.dat",
+	    "sol_mod": 407
+	},
+	"2": {
+	    "loc": "Data/Carbon/Balloon/data_exp13.dat",
+	    "sol_mod": 408
+	},
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
+    },
+    "Balloon77": {
+	"1": {
+	    "loc": "Data/Carbon/Balloon/data_exp14.dat",
+	    "sol_mod": 475
+	},
+	"2": {
+	    "loc": "Data/Carbon/Balloon/data_exp15.dat",
+	    "sol_mod": 475
+	},
+	"expname": "Balloon",
+	"years": "(1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 2
+    },
+    "Balloon91": {
+	"loc": "Data/Carbon/Balloon/data_exp16.dat",
+	"sol_mod": 1190,
+	"expname": "Balloon",
+	"years": "(1991)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 22
+    },
+    "Balloon64-65": {
+	"loc": "Data/Carbon/Balloon/data_exp17.dat",
+	"sol_mod": 434,
+	"expname": "Balloon",
+	"years": "(1964 - 1965)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 23
+    },
+    "Balloon66-67": {
+	"loc": "Data/Carbon/Balloon/data_exp18.dat",
+	"sol_mod": 586,
+	"expname": "Balloon",
+	"years": "(1966 - 1967)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 33
     },
     "CREAM-II": {
 	"loc": "Data/Carbon/CREAM-II/data_exp19.dat",
@@ -175,7 +225,7 @@
 	"loc": "Data/Carbon/Voyager1/data_exp29.dat",
 	"sol_mod": 570,
 	"expname": "Voyager1",
-	"years": "(2009 - 2012)",
+	"years": "(2012)",
 	"line_colour": 603,
 	"marker_colour": 603,
 	"marker_style": 25

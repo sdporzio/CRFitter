@@ -19,49 +19,60 @@
 	"marker_style": 25
     },
     "ALICE": {
-	"1": {
-	    "loc": "Data/Aluminium/ALICE/data_exp4.dat",
-	    "sol_mod": 468
-	},
+	"loc": "Data/Aluminium/ALICE/data_exp4.dat",
+	"sol_mod": 468,
 	"expname": "ALICE",
 	"years": "(1997 - 2010)",
 	"line_colour": 434,
 	"marker_colour": 434,
 	"marker_style": 28
     },
-
-
-
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Aluminium/Balloon/data_exp5.dat",
-	    "sol_mod": 761
-	},
-	"2": {
-	    "loc": "Data/Aluminium/Balloon/data_exp6.dat",
-	    "sol_mod": 482
-	},
-	"3": {
-	    "loc": "Data/Aluminium/Balloon/data_exp7.dat",
-	    "sol_mod": 461
-	},
-	"4": {
-	    "loc": "Data/Aluminium/Balloon/data_exp8.dat",
-	    "sol_mod": 466
-	},
-	"5": {
-	    "loc": "Data/Aluminium/Balloon/data_exp9.dat",
-	    "sol_mod": 551
-	
-	},
+    "Balloon68": {
+	"loc": "Data/Aluminium/Balloon/data_exp5.dat",
+	"sol_mod": 761,
 	"expname": "Balloon",
-	"years": "(1964 - 1977)",
+	"years": "(1968)",
 	"line_colour": 635,
 	"marker_colour": 635,
 	"marker_style": 25
     },
-   
-     "CRISIS": {
+    "Balloon71-72": {
+	"loc": "Data/Aluminium/Balloon/data_exp6.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon72": {
+	"loc": "Data/Aluminium/Balloon/data_exp7.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon73": {
+	"loc": "Data/Aluminium/Balloon/data_exp8.dat",
+	"sol_mod": 466,
+	"expname": "Balloon",
+	"years": "(1973)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon74-76": {
+	"loc": "Data/Aluminium/Balloon/data_exp9.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1964 - 1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "CRISIS": {
 	"1": {
 	    "loc": "Data/Aluminium/CRISIS/data_exp10.dat",
 	    "sol_mod": 417
@@ -72,12 +83,11 @@
 
         },
 	"expname": "CRISIS",
-	"years": "(1997 - 2010)",
+	"years": "(1977)",
 	"line_colour": 600,
 	"marker_colour": 600,
 	"marker_style": 23
     },
- 
     "HEAO3-C2": {
 	"loc": "Data/Aluminium/HEAO3-C2/data_exp12.dat",
 	"sol_mod": 742,
@@ -86,6 +96,5 @@
 	"line_colour": 49,
 	"marker_colour": 49,
 	"marker_style": 30
-   
     }
 }

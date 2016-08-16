@@ -23,70 +23,122 @@
 	"marker_colour": 632,
 	"marker_style": 25
     },
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Boron/Balloon/data_exp5.dat",
-	    "sol_mod": 1226
-	},
-	"2": {
-	    "loc": "Data/Boron/Balloon/data_exp6.dat",
-	    "sol_mod": 386
-	},
-	"3": {
-	    "loc": "Data/Boron/Balloon/data_exp7.dat",
-	    "sol_mod": 482
-	},
-	"4": {
-	    "loc": "Data/Boron/Balloon/data_exp8.dat",
-	    "sol_mod": 461
-	},
-	"5": {
-	    "loc": "Data/Boron/Balloon/data_exp9.dat",
-	    "sol_mod": 466
-	},
-	"6": {
-	    "loc": "Data/Boron/Balloon/data_exp10.dat",
-	    "sol_mod": 551
-	},
-	"7": {
-	    "loc": "Data/Boron/Balloon/data_exp11.dat",
-	    "sol_mod": 407
-	},
-	"8": {
-	    "loc": "Data/Boron/Balloon/data_exp12.dat",
-	    "sol_mod": 408
-	},
-	"9": {
-	    "loc": "Data/Boron/Balloon/data_exp13.dat",
-	    "sol_mod": 475
-	},
-        "10": {
-	    "loc": "Data/Boron/Balloon/data_exp14.dat",
-	    "sol_mod": 475
-	},
-        "11": {
-	    "loc": "Data/Boron/Balloon/data_exp15.dat",
-	    "sol_mod": 1190
-	},
-        "12": {
-	    "loc": "Data/Boron/Balloon/data_exp16.dat",
-	    "sol_mod": 434
-	},
-        "13": {
-	    "loc": "Data/Boron/Balloon/data_exp17.dat",
-	    "sol_mod": 586
-	},
+    "Balloon57": {
+	"loc": "Data/Boron/Balloon/data_exp5.dat",
+	"sol_mod": 1226,
 	"expname": "Balloon",
-	"years": "(1964 - 1977)",
+	"years": "(1957)",
 	"line_colour": 635,
 	"marker_colour": 635,
 	"marker_style": 25
+    },
+    "Balloon65": {
+	"loc": "Data/Boron/Balloon/data_exp6.dat",
+	"sol_mod": 386,
+	"expname": "Balloon",
+	"years": "(1965)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon71-72": {
+	"loc": "Data/Boron/Balloon/data_exp7.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon72": {
+	"loc": "Data/Boron/Balloon/data_exp8.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon73": {
+	"loc": "Data/Boron/Balloon/data_exp9.dat",
+	"sol_mod": 466,
+	"expname": "Balloon",
+	"years": "(1973)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "Balloon74-76": {
+	"loc": "Data/Boron/Balloon/data_exp10.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 32
+    },
+    "Balloon76": {
+	"1": {
+	    "loc": "Data/Boron/Balloon/data_exp11.dat",
+	    "sol_mod": 407
+	},
+	"2": {
+	    "loc": "Data/Boron/Balloon/data_exp12.dat",
+	    "sol_mod": 408
+	},
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon77": {
+	"1": {
+	    "loc": "Data/Boron/Balloon/data_exp13.dat",
+	    "sol_mod": 475
+	},
+        "2": {
+	    "loc": "Data/Boron/Balloon/data_exp14.dat",
+	    "sol_mod": 475
+	},
+	"expname": "Balloon",
+	"years": "(1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
+    },
+    "Balloon91": {
+	"loc": "Data/Boron/Balloon/data_exp15.dat",
+	"sol_mod": 1190,
+	"expname": "Balloon",
+	"years": "(1991)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 2
+    },
+    "Balloon64-65": {
+	"loc": "Data/Boron/Balloon/data_exp16.dat",
+	"sol_mod": 434,
+	"expname": "Balloon",
+	"years": "(1964 - 1965)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 22
+    },
+    "Balloon66-67": {
+	"loc": "Data/Boron/Balloon/data_exp17.dat",
+	"sol_mod": 586,
+	"expname": "Balloon",
+	"years": "(1966 - 1967)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 23
     },
     "CRN-Spacelab2": {
 	"loc": "Data/Boron/CRN-Spacelab2/data_exp18.dat",
 	"sol_mod": 544,
 	"expname": "CRN-Spacelab2",
-	"years": "(2005 - 2006)",
+	"years": "(1985)",
 	"line_colour": 434,
 	"marker_colour": 434,
 	"marker_style": 28
@@ -126,7 +178,7 @@
 	},
 	
 	"expname": "OGO",
-	"years": "(1964 - 1968)",
+	"years": "(1964 - 1965)",
 	"line_colour": 600,
 	"marker_colour": 600,
 	"marker_style": 23
@@ -135,7 +187,7 @@
 	"loc": "Data/Boron/PAMELA/data_exp24.dat",
 	"sol_mod": 383,
 	"expname": "PAMELA",
-	"years": "(1979 - 1980)",
+	"years": "(2006 - 2008)",
 	"line_colour": 50,
 	"marker_colour": 50,
 	"marker_style": 31
@@ -144,10 +196,9 @@
 	"loc": "Data/Boron/TRACER06/data_exp25.dat",
 	"sol_mod": 443,
 	"expname": "TRACER06",
-	"years": "(1979 - 1980)",
+	"years": "(2006)",
 	"line_colour": 416,
 	"marker_colour": 416,
 	"marker_style": 22
-
     }
 }

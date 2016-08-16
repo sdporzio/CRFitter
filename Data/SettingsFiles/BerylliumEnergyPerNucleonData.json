@@ -1,58 +1,82 @@
 {
     "ACE-CRIS": {
-	"1": {
-	    "loc": "Data/Beryllium/ACE-CRIS/data_exp1.dat",
-	    "sol_mod": 508
-	},
-	
+	"loc": "Data/Beryllium/ACE-CRIS/data_exp1.dat",
+	"sol_mod": 508,
 	"expname": "ACE-CRIS",
 	"years": "(1998 - 1999)",
 	"line_colour": 632,
 	"marker_colour": 632,
 	"marker_style": 25
     },
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Beryllium/Balloon/data_exp2.dat",
-	    "sol_mod": 1226
-	},
-	"2": {
-	    "loc": "Data/Beryllium/Balloon/data_exp3.dat",
-	    "sol_mod": 482
-	},
-	"3": {
-	    "loc": "Data/Beryllium/Balloon/data_exp4.dat",
-	    "sol_mod": 461
-	},
-	"4": {
-	    "loc": "Data/Beryllium/Balloon/data_exp5.dat",
-	    "sol_mod": 551
-	},
-	"5": {
-	    "loc": "Data/Beryllium/Balloon/data_exp6.dat",
-	    "sol_mod": 475
-	},
-	"6": {
-	    "loc": "Data/Beryllium/Balloon/data_exp7.dat",
-	    "sol_mod": 475
-	},
-	"7": {
-	    "loc": "Data/Beryllium/Balloon/data_exp8.dat",
-	    "sol_mod": 1190
-	},
-	"8": {
-	    "loc": "Data/Beryllium/Balloon/data_exp9.dat",
-	    "sol_mod": 586
-	},
-	
+    "Balloon57": {
+	"loc": "Data/Beryllium/Balloon/data_exp2.dat",
+	"sol_mod": 1226,
 	"expname": "Balloon",
-	"years": "(1964 - 1991)",
+	"years": "(1957)",
 	"line_colour": 635,
 	"marker_colour": 635,
 	"marker_style": 25
     },
-   
-   
+    "Balloon71-72": {
+	"loc": "Data/Beryllium/Balloon/data_exp3.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon72": {
+	"loc": "Data/Beryllium/Balloon/data_exp4.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Baloon74-76": {
+	"loc": "Data/Beryllium/Balloon/data_exp5.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon77": {
+	"1": {
+	    "loc": "Data/Beryllium/Balloon/data_exp6.dat",
+	    "sol_mod": 475
+	},
+	"2": {
+	    "loc": "Data/Beryllium/Balloon/data_exp7.dat",
+	    "sol_mod": 475
+	},
+	"expname": "Balloon",
+	"years": "(1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "Balloon91": {
+	"loc": "Data/Beryllium/Balloon/data_exp8.dat",
+	"sol_mod": 1190,
+	"expname": "Balloon",
+	"years": "(1991)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon66-67": {
+	"loc": "Data/Beryllium/Balloon/data_exp9.dat",
+	"sol_mod": 586,
+	"expname": "Balloon",
+	"years": "(1966 - 1967)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
+    },
     "HEAO3-C2": {
 	"loc": "Data/Beryllium/HEAO3-C2/data_exp10.dat",
 	"sol_mod": 742,
@@ -63,25 +87,19 @@
 	"marker_style": 30
     },
     "IMP": {
-	"1": {
-	    "loc": "Data/Beryllium/IMP/data_exp11.dat",
-	    "sol_mod": 835
-	},
-	
+	"loc": "Data/Beryllium/IMP/data_exp11.dat",
+	"sol_mod": 835,
 	"expname": "IMP",
-	"years": "(1969 - 1973)",
+	"years": "(1969 - 1970)",
 	"line_colour": 6,
 	"marker_colour": 6,
 	"marker_style": 25
     },
     "OGO": {
-	"1": {
-	    "loc": "Data/Beryllium/OGO/data_exp12.dat",
-	    "sol_mod": 352
-	},
-	
+	"loc": "Data/Beryllium/OGO/data_exp12.dat",
+	"sol_mod": 352,
 	"expname": "OGO",
-	"years": "(1964 - 1968)",
+	"years": "(1965)",
 	"line_colour": 600,
 	"marker_colour": 600,
 	"marker_style": 23

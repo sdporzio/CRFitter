@@ -18,69 +18,107 @@
 	"marker_colour": 632,
 	"marker_style": 25
     },
-     "ATIC02": {
-	"1": {
-	    "loc": "Data/Oxygen/ATIC02/data_exp4.dat",
-	    "sol_mod": 909
-	},
-	
+    "ATIC02": {
+	"loc": "Data/Oxygen/ATIC02/data_exp4.dat",
+	"sol_mod": 909,
 	"expname": "ATIC02",
 	"years": "(2003)",
 	"line_colour": 95,
 	"marker_colour": 95,
 	"marker_style": 26
-        },
-
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Oxygen/Balloon/data_exp5.dat",
-	    "sol_mod": 386
-	},
-	"2": {
-	    "loc": "Data/Oxygen/Balloon/data_exp6.dat",
-	    "sol_mod": 482
-	},
-	"3": {
-	    "loc": "Data/Oxygen/Balloon/data_exp7.dat",
-	    "sol_mod": 461
-	},
-	"4": {
-	    "loc": "Data/Oxygen/Balloon/data_exp8.dat",
-	    "sol_mod": 466
-	},
-	"5": {
-	    "loc": "Data/Oxygen/Balloon/data_exp9.dat",
-	    "sol_mod": 551
-	},
-	"6": {
-	    "loc": "Data/Oxygen/Balloon/data_exp10.dat",
-	    "sol_mod": 407
-	},
-	"7": {
-	    "loc": "Data/Oxygen/Balloon/data_exp11.dat",
-	    "sol_mod": 408
-	},
-	"8": {
-	    "loc": "Data/Oxygen/Balloon/data_exp12.dat",
-	    "sol_mod": 475
-	},
-	"9": {
-	    "loc": "Data/Oxygen/Balloon/data_exp13.dat",
-	    "sol_mod": 475
-	},
-        "10": {
-	    "loc": "Data/Oxygen/Balloon/data_exp14.dat",
-	    "sol_mod": 1190
-	},
-        "11": {
-	    "loc": "Data/Oxygen/Balloon/data_exp15.dat",
-	    "sol_mod": 434
-	},
+    },
+    "Balloon65": {
+	"loc": "Data/Oxygen/Balloon/data_exp5.dat",
+	"sol_mod": 386,
 	"expname": "Balloon",
-	"years": "(1964 - 1977)",
+	"years": "(1965)",
 	"line_colour": 635,
 	"marker_colour": 635,
 	"marker_style": 25
+    },
+    "Balloon71-72": {
+	"loc": "Data/Oxygen/Balloon/data_exp6.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon72": {
+	"loc": "Data/Oxygen/Balloon/data_exp7.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon73": {
+	"loc": "Data/Oxygen/Balloon/data_exp8.dat",
+	"sol_mod": 466,
+	"expname": "Balloon",
+	"years": "(1973)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon74-76": {
+	"loc": "Data/Oxygen/Balloon/data_exp9.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "Balloon76": {
+	"1": {
+	    "loc": "Data/Oxygen/Balloon/data_exp10.dat",
+	    "sol_mod": 407
+	},
+	"2": {
+	    "loc": "Data/Oxygen/Balloon/data_exp11.dat",
+	    "sol_mod": 408
+	},
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 32
+    },
+    "Balloon77": {
+	"1": {
+	    "loc": "Data/Oxygen/Balloon/data_exp12.dat",
+	    "sol_mod": 475
+	},
+	"2": {
+	    "loc": "Data/Oxygen/Balloon/data_exp13.dat",
+	    "sol_mod": 475
+	},
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon91": {
+	"loc": "Data/Oxygen/Balloon/data_exp14.dat",
+	"sol_mod": 1190,
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
+    },
+    "Balloon64-65": {
+	"loc": "Data/Oxygen/Balloon/data_exp15.dat",
+	"sol_mod": 434,
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 2
     },
     "CREAM-II": {
 	"loc": "Data/Oxygen/CREAM-II/data_exp16.dat",
@@ -157,9 +195,9 @@
 	    "sol_mod": 691
 	},
 	"expname": "TRACER",
-	"years": "(2003 - 2006)",
-	"line_colour": 635,
-	"marker_colour": 635,
+	"years": "(1999 - 2006)",
+	"line_colour": 807,
+	"marker_colour": 807,
 	"marker_style": 25
     },
     "Voyager": {

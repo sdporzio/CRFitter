@@ -18,48 +18,83 @@
 	"marker_colour": 632,
 	"marker_style": 25
     },
-    "Balloon": {
-	"1": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1964-1965.dat",
-	    "sol_mod": 434
-	},
-	"2": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1965.dat",
-	    "sol_mod": 386
-	},
-	"3": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1971-1972.dat",
-	    "sol_mod": 482
-	},
-	"4": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1972.dat",
-	    "sol_mod": 461
-	},
-	"5": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1973.dat",
-	    "sol_mod": 466
-	},
-	"6": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1974-1976.dat",
-	    "sol_mod": 551
-	},
-	"7": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-09.dat",
-	    "sol_mod": 407
-	},
-	"8": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-10.dat",
-	    "sol_mod": 408
-	},
-	"9": {
-	    "loc": "Data/Nitrogen/Balloon/Balloon-1977.dat",
-	    "sol_mod": 475
-	},
+    "Balloon64-65": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1964-1965.dat",
+	"sol_mod": 434,
 	"expname": "Balloon",
-	"years": "(1964 - 1977)",
+	"years": "(1964 - 1965)",
 	"line_colour": 635,
 	"marker_colour": 635,
 	"marker_style": 25
+    },
+    "Balloon65": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1965.dat",
+	"sol_mod": 386,
+	"expname": "Balloon",
+	"years": "(1965)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 26
+    },
+    "Balloon71-72": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1971-1972.dat",
+	"sol_mod": 482,
+	"expname": "Balloon",
+	"years": "(1971 - 1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 27
+    },
+    "Balloon72": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1972.dat",
+	"sol_mod": 461,
+	"expname": "Balloon",
+	"years": "(1972)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 28
+    },
+    "Balloon73": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1973.dat",
+	"sol_mod": 466,
+	"expname": "Balloon",
+	"years": "(1973)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 30
+    },
+    "Balloon74-76": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1974-1976.dat",
+	"sol_mod": 551,
+	"expname": "Balloon",
+	"years": "(1974 - 1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 32
+    },
+    "Balloon76": {
+	"1": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-09.dat",
+	    "sol_mod": 407
+	},
+	"2": {
+	    "loc": "Data/Nitrogen/Balloon/Balloon-1976-10.dat",
+	    "sol_mod": 408
+	},
+	"expname": "Balloon",
+	"years": "(1976)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 24
+    },
+    "Balloon77": {
+	"loc": "Data/Nitrogen/Balloon/Balloon-1977.dat",
+	"sol_mod": 475,
+	"expname": "Balloon",
+	"years": "(1977)",
+	"line_colour": 635,
+	"marker_colour": 635,
+	"marker_style": 5
     },
     "CREAM-II": {
 	"loc": "Data/Nitrogen/CREAM/CREAM-II-2005-2006.dat",

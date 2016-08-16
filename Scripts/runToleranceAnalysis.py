@@ -515,7 +515,7 @@ def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_
     canvas.SetLogy()
     canvas.SetLogx()
     leg.Draw()
-    pt = ROOT.TPaveText(0.15,0.15,0.50,0.30,"NBNDC")
+    pt = ROOT.TPaveText(0.50,0.70,0.85,0.85,"NBNDC")
     pt.AddText("All data minus %s"%data_to_omit)
     if Global:
         pt.AddText("Parameters fixed to Global")

@@ -125,6 +125,36 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(2,-0.33)
             func.SetParameter(3,2.60)
             FuncGood = True
+        elif primary == 'Aluminium':
+            func.SetParameter(0,1)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
+        elif primary == 'Carbon':
+            func.SetParameter(0,10)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
+        elif primary == 'Oxygen':
+            func.SetParameter(0,0.5)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
+        elif primary == 'Boron':
+            func.SetParameter(0,5)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
+        elif primary == 'Beryllium':
+            func.SetParameter(0,0.05)
+            func.SetParameter(1,1.16)
+            func.SetParameter(2,-0.33)
+            func.SetParameter(3,2.60)
+            FuncGood = True
         else:
             print "%s currently not supported with this parameterisation. Please choose another"%primary
             FuncGood = False

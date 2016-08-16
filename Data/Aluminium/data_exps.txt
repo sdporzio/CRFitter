@@ -1,0 +1,14 @@
+#        27Al and Al
+#   file_name    number_data  qty  exp_name
+files/1277679004/data_exp1.dat       7      ACE-CRIS(1997/08-1998/04)   Al
+files/1277679004/data_exp2.dat       7      ACE-CRIS(2001/05-2003/09)   Al
+files/1277679004/data_exp3.dat       7      ACE-CRIS(2009/03-2010/01)   Al
+files/1277679004/data_exp4.dat       1      ALICE(1987/08+1987/08)   Al
+files/1277679004/data_exp5.dat       1      Balloon(1968/07)   Al
+files/1277679004/data_exp6.dat       6      Balloon(1971/09+1972/10)   Al
+files/1277679004/data_exp7.dat       9      Balloon(1972/10)   Al
+files/1277679004/data_exp8.dat       5      Balloon(1973/08)   Al
+files/1277679004/data_exp9.dat       7      Balloon(1974/07+1974/08+1976/09)   Al
+files/1277679004/data_exp10.dat      11      CRISIS(1977/05)   Al
+files/1277679004/data_exp11.dat       1      CRISIS(1977/05)   27Al
+files/1277679004/data_exp12.dat      13      HEAO3-C2(1979/10-1980/06)   Al

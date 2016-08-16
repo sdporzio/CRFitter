@@ -54,6 +54,10 @@ def PlotSaveFluxMultiGraph(fgs,leg,U1,U2,D1,D2,primary,outdir,emin,emax,fit_func
     canvas.SetLogy()
     canvas.SetLogx()
     leg.Draw()
+
+    # Redraw the axes so the ticks aren't covered by the contours
+    ROOT.gPad.RedrawAxis()
+    
     if outdir == os.getcwd():
         canvas.SaveAs("%s/Global%sFit.%s"%(outdir,primary,extension))
     else:

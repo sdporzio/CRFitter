@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!Data
+!Scripts
+!runCRFitter.sh
+!config.sh
+!LICENSE
+!README.md
+# etc...
+
+# ...even if they are in subdirectories
+!*/

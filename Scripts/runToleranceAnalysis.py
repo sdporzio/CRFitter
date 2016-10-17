@@ -103,7 +103,7 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
         func.SetParName(1,"b")
         func.SetParName(2,"c")
         func.SetParName(3,"d")
-        
+
         # Set initial values from Barr et al paper
         # [arXiv:astro-ph/0611266]
         if primary == 'Proton':
@@ -133,7 +133,7 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
         func = ROOT.TF1("Simple","[0]*x^(-1*[1])",emin,emax)
         func.SetParName(0,"a")
         func.SetParName(1,"d")
-        
+
         # Set initial values from Barr et al paper
         # [arXiv:astro-ph/0611266]
         # Ignore b and c values since we neglect them here
@@ -178,10 +178,10 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(0,460)
             func.SetParameter(1,1.16)
             func.SetParameter(2,-0.33)
-            func.SetParameter(3,2.60)
-            func.SetParameter(4,500)
-            func.SetParameter(5,1)
-            func.SetParameter(6,2.58)
+            func.SetParameter(3,2.62)
+            func.SetParameter(4,400)
+            func.SetParameter(5,0.01)
+            func.SetParameter(6,2.59)
             FuncGood = True
         else:
             print "%s currently not supported with this parameterisation. Please choose another"%primary
@@ -235,7 +235,7 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
         func.SetParName(1,"y1")
         func.SetParName(2,"a2")
         func.SetParName(3,"y2")
-        
+
     return func, FuncGood
 
 def CreateFluxMultiGraph(data,omit_key=None):
@@ -275,7 +275,7 @@ def CreateFluxSingleGraph(data,include_key=None):
     leg.SetFillStyle(0)
 
     print include_key
-    
+
     for data_key in data.keys():
         if data_key == include_key:
             for j in range(0,len(data[data_key]['en'])):
@@ -394,7 +394,7 @@ def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,f
     canvas.Close()
 
 def Method1DeviationInspection(total_data_dict,fit_func,data_to_plot,primary,emin,emax,outdir,fname,Global=False):
-    
+
     dg, dleg = CreateDeviationGraph(total_data_dict,fit_func,data_to_plot)
 
     # Set up style for canvas
@@ -492,7 +492,7 @@ def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_
     canvas.Close()
 
 def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emin,emax,outdir,fname,Global=False):
-    
+
     dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,omit_key=data_to_omit)
 
     # Set up style for canvas
@@ -559,19 +559,19 @@ def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emi
     else:
         c1.SaveAs("%s/%s/%s/ToleranceMethod2/TolerancePlots/AllDataMinus%s%s%sFitParametersDeviation.pdf"%(outdir,fname,primary,data_to_omit,SaveName,primary))
     c1.Close()
-        
+
 if __name__ == '__main__':
-    
+
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('--data',type=str,
-                        help="""JSON file containing locations of all of the 
+                        help="""JSON file containing locations of all of the
                         data you want to include in the fit.""")
     parser.add_argument('--primary',type=str,default='Proton',
-                        help="""Name of primary you are performing the global 
+                        help="""Name of primary you are performing the global
                         fit on.""")
     parser.add_argument('--fname',type=str,default='GSHL',
                         help="""
-                        Name of fitting function you want to use for the global 
+                        Name of fitting function you want to use for the global
                         fits. The choices are:
                             * GSHL
                             * AMSGSHL (GSHL with AMS modification)
@@ -696,7 +696,7 @@ if __name__ == '__main__':
         outfile1 = open('%s/Method1ChiVsN.dat'%outdir,'w')
     else:
         outfile1 = open('%s/%s/%s/ToleranceMethod1/ToleranceData/Method1ChiVsN.dat'%(outdir,args.fname,args.primary),'w')
-        
+
     outfile1.write('# ExperimentNumber ExperimentFile NumData Chi DeltaChiN Err\n')
 
     for v,data_key in enumerate(total_data_dict.keys()):
@@ -713,7 +713,7 @@ if __name__ == '__main__':
 
         # Make a plot of the deviations to also inspect
         Method1DeviationInspection(total_data_dict,fit_func,data_key,args.primary,args.emin,args.emax,outdir,args.fname)
-        
+
         outfile1.write('%i %s %i %.4f %.4f %.4f\n'%(v,
                                                     data_key,
                                                     num_datapoints,

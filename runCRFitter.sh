@@ -1,35 +1,30 @@
-# Case settings
-export DATA="Data/SettingsFiles/HeliumTestEnergyPerNucleonData.json"
-export PRIMARY="Helium"
-export FNAME="AMSGSHL"
-export IFBARR="--Barr" # Else leave empty
-export OUTDIR="TestOutdir"
-export TOLERANCE="${OUTDIR}/${FNAME}/${PRIMARY}/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat"
-# export SMIN="416"
-# export SMAX="555"
-export SMIN="385"
-export SMAX="564"
+displayAndRun(){
+  COLOR='\033[1;33m'
+  DEFAULT='\033[0m'
+  echo -e "${COLOR}-> ${1}${DEFAULT}";
+  eval ${1};
+}
 
-# Global Settings
-CALC_TOL=False
-FIT_TOL=True
-OPEN_PLOT=True
+source config.sh
 
-# Function
+if ${BARR}; then
+  IFBARR="--Barr"
+else
+  IFBARR=""
+fi
+TOLERANCE="${OUTDIR}/${FNAME}/${PRIMARY}/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat"
+
 if ${CALC_TOL}; then
-  export CMD="python Scripts/runToleranceAnalysis.py --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
-  echo; echo "> ${CMD}"; echo;
-  eval ${CMD};
+  CMD="python Scripts/runToleranceAnalysis.py --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
+  displayAndRun "${CMD}"
 fi
 
 if ${FIT_TOL}; then
-  export CMD="python Scripts/fitWithTolerance_Format.py --tolerance ${TOLERANCE} --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
-  echo; echo "> ${CMD}"; echo;
-  eval ${CMD};
+  CMD="python Scripts/fitWithTolerance.py --tolerance ${TOLERANCE} --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
+  displayAndRun "${CMD}"
 fi
 
 if ${OPEN_PLOT}; then
-  export CMD="open ${OUTDIR}/${FNAME}/${PRIMARY}/FinalPlots/*.pdf";
-  echo; echo "> ${CMD}"; echo;
-  eval ${CMD};
+  CMD="open ${OUTDIR}/${FNAME}/${PRIMARY}/FinalPlots/*.pdf";
+  displayAndRun "${CMD}"
 fi

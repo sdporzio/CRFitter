@@ -6,6 +6,7 @@
 !Data
 !Scripts
 !runCRFitter.sh
+!config.sh
 # etc...
 
 # ...even if they are in subdirectories

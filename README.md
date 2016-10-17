@@ -1,6 +1,6 @@
 # CRFitter
 
-CRFitter is a fitter for cosmic rays which calculates a *tolerance* parameter to better determine uncertainties associated with the fit parameters. This *tolerance* method is inspired from the work of Stump *et al.*, 2001 and the details can be found in their papers (https://arxiv.org/abs/hep-ph/0101051, https://arxiv.org/abs/hep-ph/0101032).
+CRFitter is a fitter for cosmic rays which calculates a *tolerance* parameter to better determine uncertainties associated with the fit parameters. This *tolerance* method is inspired by the work of Stump *et al.*, 2001 and details can be found in their papers (https://arxiv.org/abs/hep-ph/0101051, https://arxiv.org/abs/hep-ph/0101032).
 
 CRFitter depends on Python, ROOT (version 6.4.4 has been tested) and PyROOT and its work is based on two scripts found in the *Scripts/* directory. `runToleranceAnalysis.py` analyzes the datasets contained in the *Data/* directory and determines a *tolerance* factor. `fitWithTolerance.py` uses this *tolerance* to determine the uncertainties on the parameters of the fit, which are then used to draw the uncertainty corridors. 'fitWithTolerance.py' must be obviously executed after 'runToleranceAnalysis.py'.
 

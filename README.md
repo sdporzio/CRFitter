@@ -45,7 +45,7 @@ python Scripts/runToleranceAnalysis.py --data Data/SettingsFiles/ProtonEnergyPer
 python Scripts/fitWithTolerance.py --tolerance Outdir/GSHL/Proton/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat --data Data/SettingsFiles/ProtonEnergyPerNucleonData.json --primary Proton --smin 385 --smax 564 --fname GSHL --Barr --outdir Outdir
 ```
 Since the script takes a large number of arguments, it is possible to use a bash parser (`runCRFitter.sh`) which uses a setting file called `config.sh`.
-Arguments for the python script can be provided to the `config.sh` and CRFitter can ran with:
+Arguments for the python script can be provided to the `config.sh` and CRFitter can run with:
 ```
 ./runCRFitter.sh
 ```

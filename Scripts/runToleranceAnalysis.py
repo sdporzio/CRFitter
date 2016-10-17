@@ -214,10 +214,10 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(0,460)
             func.SetParameter(1,1.16)
             func.SetParameter(2,-0.33)
-            func.SetParameter(3,2.60)
-            func.SetParameter(4,300)
-            func.SetParameter(5,1)
-            func.SetParameter(6,2.58)
+            func.SetParameter(3,2.62)
+            func.SetParameter(4,100)
+            func.SetParameter(5,0.01)
+            func.SetParameter(6,2.59)
             FuncGood = True
         else:
             print "%s currently not supported with this parameterisation. Please choose another"%primary

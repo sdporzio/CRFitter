@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crfitter by sdporzio</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Crfitter</h1>
+        <p class="header">A fitter for cosmic rays which calculates a tolerance parameter to better determine uncertainties associated with the fit parameters.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/sdporzio/CRFitter/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/sdporzio/CRFitter/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/sdporzio/CRFitter">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/sdporzio">sdporzio</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="crfitter" class="anchor" href="#crfitter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CRFitter</h1>
+
+<p>CRFitter is a fitter for cosmic rays which calculates a <em>tolerance</em> parameter to better determine uncertainties associated with the fit parameters. This <em>tolerance</em> method is inspired by the work of Stump <em>et al.</em>, 2001 and details can be found in their papers (<a href="https://arxiv.org/abs/hep-ph/0101051">https://arxiv.org/abs/hep-ph/0101051</a>, <a href="https://arxiv.org/abs/hep-ph/0101032">https://arxiv.org/abs/hep-ph/0101032</a>).</p>
+
+<p>CRFitter depends on Python, ROOT (version 6.4.4 has been tested) and PyROOT and its operation is based on two scripts found in the <em>Scripts/</em> directory. <code>runToleranceAnalysis.py</code> analyzes the datasets contained in the <em>Data/</em> directory and determines a <em>tolerance</em> factor. <code>fitWithTolerance.py</code> uses this <em>tolerance</em> to determine the uncertainties on the parameters of the fit, which are then used to draw the uncertainty corridors. <code>fitWithTolerance.py</code> must be obviously executed after <code>runToleranceAnalysis.py</code>.</p>
+
+<p>Both scripts rely on JSON configuration files which are located in <em>Data/SettingFiles/</em>. The JSON file must contain the path to all the datasets to be included in the analysis, plus additional settings for creating plots.</p>
+
+<p>Deviation plots with inflation factors for uncertainties in the calorimeter region, as shown in Barr <em>et al.</em>, 2005 (<a href="https://arxiv.org/abs/astro-ph/0611266">https://arxiv.org/abs/astro-ph/0611266</a>), can be produced using the specific argument <code>--Barr</code>.</p>
+
+<hr>
+
+<p>Usage:</p>
+
+<pre><code>fitWithTolerance.py [-h] [--tolerance TOLERANCE] [--data DATA]
+                       [--primary PRIMARY] [--fname FNAME] [--Barr]
+                       [--emin EMIN] [--emax EMAX] [--smin SMIN]
+                       [--smax SMAX] [--outdir OUTDIR]
+
+optional arguments:
+-h, --help            show this help message and exit
+
+--tolerance TOLERANCE     DAT file containing delta chi values from which to calculate the tolerance. (default: None)
+
+--data DATA       JSON file containing locations of all of the data you want to include in the fit. (default: None)
+
+--primary PRIMARY     Name of primary you are performing the global fit on. (default: Proton
+
+--fname FNAME     Name of fitting function you want to use for the global fits. The choices are: * GSHL * AMSGSHL (GSHL with AMS modification) * Simple (Power Law) * H3a (default: GSHL)
+
+--Barr        Flag if performing paper a la Barr et al. (default: False)
+
+--emin EMIN       Minimum energy value for fitter. (default: 0.5)
+
+--emax EMAX       Maximum energy value for fitter. (default: 250000)
+
+--smin SMIN       Minimum solar modulation value for which to accept all data. (default: 416)
+
+--smax SMAX       Maximum solar modulation value for which to accept all data. (default: 555)
+
+--outdir OUTDIR       Directory to save output. Script is designed to create subdirectories and delete older plots if it needs to, so set this carefully! If none provided, all plots will be saved in CWD. (default: None)
+</code></pre>
+
+<p>Example usage:</p>
+
+<pre><code>python Scripts/runToleranceAnalysis.py --data Data/SettingsFiles/ProtonEnergyPerNucleonData.json --primary Proton --smin 385 --smax 564 --fname GSHL --Barr --outdir Outdir
+
+python Scripts/fitWithTolerance.py --tolerance Outdir/GSHL/Proton/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat --data Data/SettingsFiles/ProtonEnergyPerNucleonData.json --primary Proton --smin 385 --smax 564 --fname GSHL --Barr --outdir Outdir
+</code></pre>
+
+<p>Since the script takes a large number of arguments, it is possible to use a bash parser (<code>runCRFitter.sh</code>) which uses a setting file called <code>config.sh</code>.
+Arguments for the python script can be provided to the <code>config.sh</code> and CRFitter can run with:</p>
+
+<pre><code>./runCRFitter.sh
+</code></pre>
+
+<hr>
+
+<p>If you have any questions, queries or comments please contact the authors:</p>
+
+<ul>
+<li><p><a href="mailto:salvatore.porzio@postgrad.manchester.ac.uk">salvatore.porzio@postgrad.manchester.ac.uk</a></p></li>
+<li><p><a href="mailto:steven.wren@icecube.wisc.edu">steven.wren@icecube.wisc.edu</a></p></li>
+</ul>
+
+<p>The authors make no guarrentee of the behaviour, stability or bug-free-ness of this code. This code is provide "as is", use is at own risk.</p>
+
+<p>Copyright (2016) Salvatore Davide Porzio, Steven Wren</p>
+
+<hr>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>

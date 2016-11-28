@@ -215,9 +215,9 @@ def InitialiseFittingFunction(fname,emin,emax,primary):
             func.SetParameter(1,1.16)
             func.SetParameter(2,-0.33)
             func.SetParameter(3,2.62)
-            func.SetParameter(4,400)
+            func.SetParameter(4,100)
             func.SetParameter(5,0.01)
-            func.SetParameter(6,2.59)
+            func.SetParameter(6,2.65)
             FuncGood = True
         else:
             print "%s currently not supported with this parameterisation. Please choose another"%primary
@@ -468,7 +468,7 @@ def Method1FitInspection(graph,leg,primary,data_to_plot,outdir,fname,emin,emax,f
     canvas.Close()
 
 def Method1DeviationInspection(total_data_dict,fit_func,data_to_plot,primary,emin,emax,outdir,fname,Global=False,extension='pdf'):
-    
+
     dg, dleg = CreateDeviationGraph(total_data_dict,fit_func,data_to_plot)
 
     # Set up style for canvas
@@ -569,7 +569,7 @@ def Method2FitInspection(mg,leg,primary,data_to_omit,outdir,fname,emin,emax,fit_
     canvas.Close()
 
 def Method2DeviationInspection(total_data_dict,fit_func,data_to_omit,primary,emin,emax,outdir,fname,Global=False,extension='pdf'):
-    
+
     dgs, dleg = CreateDeviationGraphs(total_data_dict,fit_func,omit_key=data_to_omit)
 
     # Set up style for canvas
@@ -641,7 +641,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('--data',type=str,required=True,
-                        help="""JSON file containing locations of all of the 
+                        help="""JSON file containing locations of all of the
                         data you want to include in the fit.""")
     parser.add_argument('--primary',type=str,default='Proton',
                         help="""Name of primary you are performing the global
@@ -673,7 +673,7 @@ if __name__ == '__main__':
                         to, so set this carefully! If none provided, all plots
                         will be saved in CWD.""")
     parser.add_argument('--PNG',action='store_true',default=False,
-                        help="""Flag if wanting to save plots as PNG rather 
+                        help="""Flag if wanting to save plots as PNG rather
                         than the default of PDF.""")
 
     args = parser.parse_args()
@@ -799,7 +799,7 @@ if __name__ == '__main__':
 
         # Make a plot of the deviations to also inspect
         Method1DeviationInspection(total_data_dict,fit_func,data_key,args.primary,args.emin,args.emax,outdir,args.fname,extension=extension)
-        
+
         outfile1.write('%i %s %i %.4f %.4f %.4f\n'%(v,
                                                     data_key,
                                                     num_datapoints,

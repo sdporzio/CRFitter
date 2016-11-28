@@ -14,17 +14,17 @@ else
 fi
 TOLERANCE="${OUTDIR}/${FNAME}/${PRIMARY}/ToleranceMethod2/ToleranceData/Method2DeltaChi.dat"
 
-if ${CALC_TOL}; then
+if ${CALCULATE_TOLERANCE}; then
   CMD="python Scripts/runToleranceAnalysis.py --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
   displayAndRun "${CMD}"
 fi
 
-if ${FIT_TOL}; then
+if ${FIT_WITH_TOLERANCE}; then
   CMD="python Scripts/fitWithTolerance.py --tolerance ${TOLERANCE} --data ${DATA} --primary ${PRIMARY} --smin ${SMIN} --smax ${SMAX} --fname ${FNAME} ${IFBARR} --outdir ${OUTDIR}";
   displayAndRun "${CMD}"
 fi
 
-if ${OPEN_PLOT}; then
+if ${OPEN_PLOTS}; then
   CMD="open ${OUTDIR}/${FNAME}/${PRIMARY}/FinalPlots/*.pdf";
   displayAndRun "${CMD}"
 fi

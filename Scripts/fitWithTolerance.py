@@ -3,13 +3,14 @@ import os, sys, json
 import numpy as np
 import ROOT
 import matplotlib.pyplot as plt
+import collections
 try:
     import matplotlib.patheffects as PathEffects
     PlotMatrices = True
 except:
     print "Could not import PathEffects. Correlation matrices will not be made."
     PlotMatrices = False
-    
+
 plt.rcParams['text.usetex'] = True
 
 from argparse import ArgumentParser,ArgumentDefaultsHelpFormatter
@@ -18,11 +19,11 @@ from matplotlib import cm
 from runToleranceAnalysis import LoadData, InitialiseFittingFunction, CreateFluxMultiGraph, CreateFluxGraphArray, CreateDeviationGraphs
 
 def PlotSaveFluxMultiGraph(fgs,leg,U1,U2,D1,D2,primary,outdir,emin,emax,fit_func,fname,extension='pdf'):
-    
+
     canvas = ROOT.TCanvas("c2")
     # Draw the uncertainties first so they end up behind the data
     U2.Draw("AF")
-    U2.SetTitle("Experimental Cosmic Ray %s Flux"%primary)
+    # U2.SetTitle("Experimental Cosmic Ray %s Flux"%primary)
     U2.GetYaxis().SetTitle('Flux [ (GeV/n m^{2} s sr)^{-1} ]')
     xmin = '1E%i'%(int(np.log10(emin)))
     xmax = '1E%i'%(int(np.log10(emax))+1)
@@ -57,7 +58,7 @@ def PlotSaveFluxMultiGraph(fgs,leg,U1,U2,D1,D2,primary,outdir,emin,emax,fit_func
 
     # Redraw the axes so the ticks aren't covered by the contours
     ROOT.gPad.RedrawAxis()
-    
+
     if outdir == os.getcwd():
         canvas.SaveAs("%s/Global%sFit.%s"%(outdir,primary,extension))
     else:
@@ -120,7 +121,7 @@ def GenerateFitUncertaintyLines(emin,emax,fit_func,fname,primary,covMat,Barr=Fal
         realdown.SetPoint(realdown.GetN(),en,fit_func.Eval(en))
         realup2.SetPoint(realup2.GetN(),en,fit_func.Eval(en))
         realdown2.SetPoint(realdown2.GetN(),en,fit_func.Eval(en))
-        
+
     realup.SetFillColor(390);
     realup.SetLineColor(390);
     realdown.SetFillColor(390);
@@ -207,12 +208,12 @@ def DrawFinalDeviationPlot(dgs, dleg, U1, U2, D1, D2, emin, emax, primary, outdi
     c1.SetBottomMargin(0.12)
     c1.SetLeftMargin(0.13)
     c1.SetRightMargin(0.03)
-    c1.SetTopMargin(0.10)
+    c1.SetTopMargin(0.03)
     c1.cd()
 
     # Draw the uncertainties first so they end up behind the data
     U2.Draw("AF")
-    U2.SetTitle("Experimental Cosmic Ray %s Flux"%primary)
+    # U2.SetTitle("Experimental Cosmic Ray %s Flux"%primary)
     U2.GetYaxis().SetRangeUser(-100.0,100.0)
     U2.GetYaxis().SetTitle("Deviation from central fit value (%)")
     U2.GetXaxis().SetLimits(emin,emax)
@@ -250,37 +251,54 @@ def DrawFinalDeviationPlot(dgs, dleg, U1, U2, D1, D2, emin, emax, primary, outdi
 
 def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True,extension='pdf'):
 
+    parNames = []
+    for i in range(0,fit_func.GetNpar()):
+        parNames.append(fit_func.GetParName(i))
+
     if outdir == os.getcwd():
         outfile = open('%s/CovCorMatrices.dat'%(outdir),'w')
+
     else:
         outfile = open('%s/FitReturnValues/CovCorMatrices.dat'%(outdir),'w')
-        
+        jsonOutfile1 = open('%s/JsonFormat/CovMatrix.json'%(outdir),'w')
+        jsonOutfile2 = open('%s/JsonFormat/CorMatrix.json'%(outdir),'w')
+
     outfile.write('%s %s Fit\n'%(fit_func.GetName(),primary))
     outfile.write('\n')
     outfile.write('Covariance Matrix\n')
     outfile.write('\n')
 
+    jsonMatrix1 = collections.OrderedDict()
     for i in range(0,fit_func.GetNpar()):
+        jsonMatrix1[parNames[i]] = collections.OrderedDict()
         for j in range(0,fit_func.GetNpar()):
             outfile.write('%.4f '%(covMat[i][j]))
+            jsonMatrix1[parNames[i]][parNames[j]] = covMat[i][j]
         outfile.write('\n')
 
     outfile.write('\n')
     outfile.write('Correlation Matrix\n')
     outfile.write('\n')
+    json.dump(jsonMatrix1,jsonOutfile1)
 
     corMat = []
-
+    jsonMatrix2 = collections.OrderedDict()
     for i in range(0,fit_func.GetNpar()):
         row = []
+        jsonMatrix2[parNames[i]] = collections.OrderedDict()
         for j in range(0,fit_func.GetNpar()):
             corMatVal = covMat[i][j]/(np.sqrt(covMat[i][i]*covMat[j][j]))
             row.append(corMatVal)
             outfile.write('%.4f '%(corMatVal))
+            jsonMatrix2[parNames[i]][parNames[j]] = corMatVal
         outfile.write('\n')
         corMat.append(row)
+    json.dump(jsonMatrix2,jsonOutfile2)
+
 
     outfile.close()
+    jsonOutfile1.close()
+    jsonOutfile2.close()
 
     ParNames = []
 
@@ -302,7 +320,7 @@ def PlotSaveCovCorMats(covMat,fit_func,outdir,primary,Plot=True,extension='pdf')
                          color='w',
                          path_effects=[PathEffects.withStroke(linewidth=3,
                                                               foreground='k')])
-            
+
         if outdir == os.getcwd():
             plt.savefig('%s/%s%sCorrelationMatrix.%s'%(outdir,fit_func.GetName(),primary,extension))
         else:
@@ -314,42 +332,61 @@ def SaveGlobalFit(fit_func,outdir,primary):
 
     if outdir == os.getcwd():
         outfile = open('%s/FitParameters.dat'%(outdir),'w')
+
     else:
         outfile = open('%s/FitReturnValues/FitParameters.dat'%(outdir),'w')
+        jsonOutfile1 = open('%s/JsonFormat/FitParameters.json'%(outdir),'w')
+        jsonOutfile2 = open('%s/JsonFormat/FitResults.json'%(outdir),'w')
+
 
     outfile.write('%s %s Fit Parameters\n'%(fit_func.GetName(),primary))
     outfile.write('(Errors quoted as directly returned from ROOT)\n')
     outfile.write('\n')
 
+    jsonData1 = collections.OrderedDict()
+    jsonData2 = collections.OrderedDict()
+    jsonData1['value'] = collections.OrderedDict()
+    jsonData1['error'] = collections.OrderedDict()
     for i in range(0,fit_func.GetNpar()):
+        jsonData1['value'][fit_func.GetParName(i)] = fit_func.GetParameter(i)
+        jsonData1['error'][fit_func.GetParName(i)] = fit_func.GetParError(i)
         outfile.write('%s = %.4f +/- %.4f\n'%(fit_func.GetParName(i),
                                               fit_func.GetParameter(i),
                                               fit_func.GetParError(i)))
-        
+
     outfile.write('\n')
     outfile.write('Chi2 = %.1f\n'%fit_func.GetChisquare())
     outfile.write('Number of Datapoints = %i\n'%fit_func.GetNumberFitPoints())
     outfile.write('Degrees of Freedom = %i\n'%fit_func.GetNDF())
     outfile.write('Reduced Chi2 = %.1f\n'%(fit_func.GetChisquare()/fit_func.GetNDF()))
+    jsonData2['chi2'] = fit_func.GetChisquare()
+    jsonData2['nDatapoints'] = fit_func.GetNumberFitPoints()
+    jsonData2['dof'] = fit_func.GetNDF()
+    jsonData2['redchi2'] = fit_func.GetChisquare()/float(fit_func.GetNDF())
+
+    json.dump(jsonData1,jsonOutfile1)
+    json.dump(jsonData2,jsonOutfile2)
 
     outfile.close()
+    jsonOutfile1.close()
+    jsonOutfile2.close()
 
 if __name__ == '__main__':
 
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('--tolerance',type=str,required=True,
-                        help="""Either provide path to a DAT file containing 
-                        delta chi values from which to calculate the tolerance 
+                        help="""Either provide path to a DAT file containing
+                        delta chi values from which to calculate the tolerance
                         or a number to use.""")
     parser.add_argument('--data',type=str,required=True,
-                        help="""JSON file containing locations of all of the 
+                        help="""JSON file containing locations of all of the
                         data you want to include in the fit.""")
     parser.add_argument('--primary',type=str,default='Proton',
-                        help="""Name of primary you are performing the global 
+                        help="""Name of primary you are performing the global
                         fit on.""")
     parser.add_argument('--fname',type=str,default='GSHL',
                         help="""
-                        Name of fitting function you want to use for the global 
+                        Name of fitting function you want to use for the global
                         fits. The choices are:
                             * GSHL
                             * AMSGSHL (GSHL with AMS modification)
@@ -374,7 +411,7 @@ if __name__ == '__main__':
                         to, so set this carefully! If none provided, all plots
                         will be saved in CWD.""")
     parser.add_argument('--PNG',action='store_true',default=False,
-                        help="""Flag if wanting to save plots as PNG rather 
+                        help="""Flag if wanting to save plots as PNG rather
                         than the default of PDF.""")
 
     args = parser.parse_args()
@@ -414,7 +451,7 @@ if __name__ == '__main__':
         if not os.path.isdir(args.outdir+'/'+args.fname+'/'+args.primary):
             os.makedirs(args.outdir+'/'+args.fname+'/'+args.primary)
         # Then a subdirectory to store the resultant plots/data
-        datadirs = ['FinalPlots','ContourData','FitReturnValues']
+        datadirs = ['FinalPlots','ContourData','FitReturnValues','JsonFormat']
         for datadir in datadirs:
             if not os.path.isdir(args.outdir+'/'+args.fname+'/'+args.primary+'/'+datadir):
                 os.makedirs(args.outdir+'/'+args.fname+'/'+args.primary+'/'+datadir)
@@ -433,7 +470,7 @@ if __name__ == '__main__':
     try:
         float(args.tolerance)
         tolerance = float(args.tolerance)
-    
+
     except:
         chidata = np.genfromtxt(args.tolerance,
                                 delimiter = " ",
@@ -447,7 +484,7 @@ if __name__ == '__main__':
         tolerance = np.sqrt(totaldeltachi)
 
     ROOT.TVirtualFitter.SetErrorDef(tolerance)
-    
+
     #########################################################
     ###                                                   ###
     ### Load all Data in to a Dictionary                  ###
